@@ -17,56 +17,56 @@ class Etablisement
      *
      * @ORM\Column(name="libelle_etablissement", type="string", length=50, nullable=false)
      */
-    private $libelleEtablissement;
+    public $libelleEtablissement;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nom_etablissement", type="string", length=50, nullable=false)
      */
-    private $nomEtablissement;
+    public $nomEtablissement;
 
     /**
      * @var string
      *
      * @ORM\Column(name="tel_etablissement", type="string", length=50, nullable=false)
      */
-    private $telEtablissement;
+    public $telEtablissement;
 
     /**
      * @var string
      *
      * @ORM\Column(name="email_etablissement", type="string", length=50, nullable=false)
      */
-    private $emailEtablissement;
+    public $emailEtablissement;
 
     /**
      * @var string
      *
      * @ORM\Column(name="responsable_etablissement", type="string", length=50, nullable=false)
      */
-    private $responsableEtablissement;
+    public $responsableEtablissement;
 
     /**
      * @var string
      *
      * @ORM\Column(name="numero_etablissement", type="string", length=50, nullable=false)
      */
-    private $numeroEtablissement;
+    public $numeroEtablissement;
 
     /**
      * @var string
      *
      * @ORM\Column(name="rue_etablissement", type="string", length=50, nullable=false)
      */
-    private $rueEtablissement;
+    public $rueEtablissement;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ville_etablissement", type="string", length=50, nullable=false)
      */
-    private $villeEtablissement;
+    public $villeEtablissement;
 
     /**
      * @var integer
@@ -75,7 +75,7 @@ class Etablisement
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idEtablissement;
+    public $idEtablissement;
 
     /**
      * @var \AppBundle\Entity\Pays
@@ -85,14 +85,14 @@ class Etablisement
      *   @ORM\JoinColumn(name="Eid_pays", referencedColumnName="id_pays")
      * })
      */
-    private $eidPays;
+    public $eidPays;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Eleve", mappedBy="eidEtablissement")
      */
-    private $eidEleveProposition;
+    public $eidEleveProposition;
 
     /**
      * Constructor

@@ -17,161 +17,161 @@ class Eleve
      *
      * @ORM\Column(name="nom_eleve", type="string", length=50, nullable=false)
      */
-    private $nomEleve;
+    public $nomEleve;
 
     /**
      * @var string
      *
      * @ORM\Column(name="prenom_eleve", type="string", length=50, nullable=false)
      */
-    private $prenomEleve;
+    public $prenomEleve;
 
     /**
      * @var string
      *
      * @ORM\Column(name="sexe_eleve", type="string", length=50, nullable=false)
      */
-    private $sexeEleve;
+    public $sexeEleve;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_naiss_eleve", type="date", nullable=false)
      */
-    private $dateNaissEleve;
+    public $dateNaissEleve;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="promo_eleve", type="integer", nullable=false)
      */
-    private $promoEleve;
+    public $promoEleve;
 
     /**
      * @var string
      *
      * @ORM\Column(name="email_eleve", type="string", length=50, nullable=false)
      */
-    private $emailEleve;
+    public $emailEleve;
 
     /**
      * @var string
      *
      * @ORM\Column(name="email_parent_eleve", type="string", length=50, nullable=false)
      */
-    private $emailParentEleve;
+    public $emailParentEleve;
 
     /**
      * @var string
      *
      * @ORM\Column(name="mot_de_passe_eleve", type="string", length=50, nullable=false)
      */
-    private $motDePasseEleve;
+    public $motDePasseEleve;
 
     /**
      * @var string
      *
      * @ORM\Column(name="commentaires_general_eleve", type="text", length=65535, nullable=false)
      */
-    private $commentairesGeneralEleve;
+    public $commentairesGeneralEleve;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="terre_des_langues_eleve", type="boolean", nullable=false)
      */
-    private $terreDesLanguesEleve;
+    public $terreDesLanguesEleve;
 
     /**
      * @var string
      *
      * @ORM\Column(name="commentaires_choix_eleve", type="text", length=65535, nullable=false)
      */
-    private $commentairesChoixEleve;
+    public $commentairesChoixEleve;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="visa_parent_eleve", type="boolean", nullable=false)
      */
-    private $visaParentEleve;
+    public $visaParentEleve;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="UE2_date_eleve", type="date", nullable=false)
      */
-    private $ue2DateEleve;
+    public $ue2DateEleve;
 
     /**
      * @var string
      *
      * @ORM\Column(name="UE2_theme_dossier_eleve", type="string", length=50, nullable=false)
      */
-    private $ue2ThemeDossierEleve;
+    public $ue2ThemeDossierEleve;
 
     /**
      * @var float
      *
      * @ORM\Column(name="UE2_note_eleve", type="float", precision=10, scale=0, nullable=false)
      */
-    private $ue2NoteEleve;
+    public $ue2NoteEleve;
 
     /**
      * @var string
      *
      * @ORM\Column(name="UE2_appreciations_eleve", type="text", length=65535, nullable=false)
      */
-    private $ue2AppreciationsEleve;
+    public $ue2AppreciationsEleve;
 
     /**
      * @var string
      *
      * @ORM\Column(name="type_eleve", type="string", length=1, nullable=false)
      */
-    private $typeEleve;
+    public $typeEleve;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="UE1_date_ucape", type="date", nullable=true)
      */
-    private $ue1DateUcape;
+    public $ue1DateUcape;
 
     /**
      * @var float
      *
      * @ORM\Column(name="UE1_note_ucape", type="float", precision=10, scale=0, nullable=true)
      */
-    private $ue1NoteUcape;
+    public $ue1NoteUcape;
 
     /**
      * @var string
      *
      * @ORM\Column(name="UE1_appreciations_ucape", type="text", length=65535, nullable=true)
      */
-    private $ue1AppreciationsUcape;
+    public $ue1AppreciationsUcape;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="obtention_diplome_ucape", type="boolean", nullable=true)
      */
-    private $obtentionDiplomeUcape;
+    public $obtentionDiplomeUcape;
 
     /**
      * @var string
      *
      * @ORM\Column(name="mention_ucape", type="string", length=50, nullable=true)
      */
-    private $mentionUcape;
+    public $mentionUcape;
 
     /**
      * @var string
      *
      * @ORM\Column(name="commentaires_ucape", type="text", length=65535, nullable=true)
      */
-    private $commentairesUcape;
+    public $commentairesUcape;
 
     /**
      * @var integer
@@ -180,21 +180,21 @@ class Eleve
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $idEleve;
+    public $idEleve;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Classe", mappedBy="eidEleveAppartenir")
      */
-    private $eidClasse;
+    public $eidClasse;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Pays", mappedBy="eidEleveChoix")
      */
-    private $eidPaysChoix;
+    public $eidPaysChoix;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -209,7 +209,7 @@ class Eleve
      *   }
      * )
      */
-    private $eidEtablissement;
+    public $eidEtablissement;
 
     /**
      * Constructor
