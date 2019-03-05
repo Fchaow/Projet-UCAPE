@@ -68,6 +68,87 @@ class Passer
      * })
      */
     private $eidLanguePasser;
+    
+    /**
+     * Get datePasser
+     *
+     * @return date
+     */
+    
+    public function getDatePasser()
+    {
+        return $this->datePasser;
+    }
+    
+    /**
+     * Set datePasser
+     *
+     * @param date datePasser
+     *
+     * @return Passer
+     *
+     */
+    
+    public function setDatePasser($datePasser)
+    {
+        $this->datePasser = $datePasser;
+        
+        return $this;
+    }
+    
+    /**
+     * Get notePasser
+     *
+     * @return float
+     */
+    
+    public function getNotePasser()
+    {
+        return $this->notePasser;
+    }
+    
+    /**
+     * Set notePasser
+     *
+     * @param int notePasser
+     *
+     * @return Passer
+     *
+     */
+    
+    public function setNotePasser($notePasser)
+    {
+        $this->notePasser = $notePasser;
+        
+        return $this;
+    }
+    
+    /**
+     * Get appreciationPasser
+     *
+     * @return string
+     */
+    
+    public function getAppreciationPasser()
+    {
+        return $this->appreciationPasser;
+    }
+    
+    /**
+     * Set appreciationPasser
+     *
+     * @param string appreciationPasser
+     *
+     * @return Passer
+     *
+     */
+    
+    public function setAppreciationPasser($appreciationPasser)
+    {
+        $this->appreciationPasser = $appreciationPasser;
+        
+        return $this;
+    }
 
 
 }
