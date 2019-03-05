@@ -1,13 +1,110 @@
+
 <!DOCTYPE html>
+
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+
+<head>
+
+  <meta charset="utf-8">
+    
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>{% block title %}BIENVENUE{% endblock %}</title>
+
+     <style type="text/css">
+            #message_notice { font-weight: 500; text-align: center; }
+        </style>
+
+  {% block stylesheets %}
+
+    {# On charge le CSS de bootstrap depuis le site directement #}
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+  {% endblock %}
+
+</head>
+
+
+<body>
+
+  <div class="container">
+
+    <div id="header" class="jumbotron">
+
+      <h1>Site UCAPE</h1>
+
+       <div>
+             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} 
+            {% else %}
+                {{ 'layout.login'|trans({}, 'FOSUserBundle') }}
+            {% endif %}
+        </div>
+
+
+    </div>
+   
+
+    <div class="row">
+
+      <div id="menu" class="col-md-3">
+
+        <h3>Menu</h3>
+
+        <ul class="nav nav-pills nav-stacked">
+
+          <li>En cours......</li>
+
+          <li>En cours......</li>
+
+        </ul>
+          
+        </div>
+      </div>
+
+        <div id="message_notice">
+            {% for flashMessage in app.session.flashbag.get('notice') %}
+                {{ flashMessage }}
+            {% endfor %}
+        </div>
+        
+        <div class="wrapper_body">
+            <div class="container_body">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+
+
+        <br>
+        <br>
+        <br>
+        
+
+
+    <footer>
+
+      <p> UCAPE {{ 'now'|date('Y') }} </p>
+
+    </footer>
+
+  </div>
+
+
+  {% block javascripts %}
+
+    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+  {% endblock %}
+
+
+</body>
+
 </html>

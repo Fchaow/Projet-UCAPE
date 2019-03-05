@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+
+
+
+{% block body %}
+
+    <h1>Page administrateur</h1>
+
+     {% if is_granted('IS_AUTHENTICATED_FULLY') %}   
+        <p><a href="{{ path('fos_user_security_logout') }}">Se deconnecter</a></p>
+        
+    <h1>Votre role dans cette page</h1>
+
+    <p>Vous etes un : </p>
+
+
+        <p>ADMINISTARTEUR</p>
+
+        <p><a href="{{ path('form')}}">Accédez au formulaire 1</a></p>
+
+        <p><a href="{{ path('form2')}}">Accédez au formulaire 2</a></p>
+    {% endif %}
+
+{% endblock %}

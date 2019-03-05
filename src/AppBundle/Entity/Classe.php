@@ -50,6 +50,32 @@ class Classe
     {
         $this->eidEleveAppartenir = new \Doctrine\Common\Collections\ArrayCollection();
     }
+    public function getIdClasse()
+    {
+        return $this->idClasse;
+    }
+    /**
+     * Set libelleClasse
+     *
+     * @param string $libelleClasse
+     *
+     * @return Classe
+     */
+    public function setLibelleClasse($libelleClasse)
+    {
+        $this->libelleClasse = $libelleClasse;
 
+        return $this;
+    }
+
+    /**
+     * Get libelleClasse
+     *
+     * @return string
+     */
+    public function getLibelleClasse()
+    {
+        return $this->libelleClasse;
+    }
 }
 
