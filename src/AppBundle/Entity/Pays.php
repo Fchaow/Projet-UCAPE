@@ -50,6 +50,60 @@ class Pays
     {
         $this->eidEleveChoix = new \Doctrine\Common\Collections\ArrayCollection();
     }
+    
+    /**
+     *Get libellePays
+     *
+     *@return string
+     */
+    
+    public function getLibellePays()
+    {
+        return $this->libellePays;
+    }
+    
+    /**
+     *Set libellePays
+     *
+     * @param string libellePays
+     *
+     * @return Pays
+     *
+     */
+    
+    public function setLibellePays($libellePays)
+    {
+        $this->libellePays = $libellePays;
+        
+        return $this;
+    }
+    
+    /**
+     * Get idPays
+     *
+     * @return int
+     */
+    
+    public function getIdPays()
+    {
+        return $this->idPays;
+    }
+    
+    /**
+     * Set idPays
+     *
+     * @param int idPays
+     *
+     * @return Pays
+     *
+     */
+    
+    public function setIdPays($idPays)
+    {
+        $this->idPays = $idPays;
+        
+        return $this;
+    }
 
 }
 

@@ -52,6 +52,116 @@ class Examinateur
      */
     private $eidLangueExaminateur;
 
+        
+    /**
+     * Get nomExaminateur
+     *
+     * @return string
+     */
+    
+    public function getNomExaminateur()
+    {
+        return $this->nomExaminateur;
+    }
+    
+    /**
+     * Set nomExaminateur
+     *
+     * @param string nomExaminateur
+     *
+     * @return Examinateur
+     *
+     */
+    
+    public function setNomExaminateur($nomExaminateur)
+    {
+        $this->nomExaminateur = $nomExaminateur;
+        
+        return $this;
+    }
+    
+    /**
+     * Get nomExaminateur
+     *
+     * @return string
+     */
+    
+    public function getPrenomExaminateur()
+    {
+        return $this->prenomExaminateur;
+    }
+    
+    /**
+     * Set prenomExaminateur
+     *
+     * @param string prenomExaminateur
+     *
+     * @return Examinateur
+     *
+     */
+    
+    public function setPrenomExaminateur($prenomExaminateur)
+    {
+        $this->prenomExaminateur = $prenomExaminateur;
+        
+        return $this;
+    }
+    
+    /**
+     * Get telephoneExaminateur
+     *
+     * @return string
+     */
+    
+    public function getTelephoneExaminateur()
+    {
+        return $this->telephoneExaminateur;
+    }
+    
+    /**
+     * Set telephoneExaminateur
+     *
+     * @param string telephoneExaminateur
+     *
+     * @return Examinateur
+     *
+     */
+    
+    public function setTelephoneExaminateur($telephoneExaminateur)
+    {
+        $this->telephoneExaminateur = $telephoneExaminateur;
+        
+        return $this;
+    }
+    
+    /**
+     * Get idExaminateur
+     *
+     * @return int
+     */
+    
+    public function getIdExaminateur()
+    {
+        return $this->idExaminateur;
+    }
+    
+    /**
+     * Set idExaminateur
+     *
+     * @param int idExaminateur
+     *
+     * @return Examinateur
+     *
+     */
+    
+    public function setIdExaminateur($idExaminateur)
+    {
+        $this->idExaminateur = $idExaminateur;
+        
+        return $this;
+    }
+    
+    
 
 }
 
