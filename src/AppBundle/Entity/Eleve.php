@@ -185,7 +185,7 @@ class Eleve
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Classe", mappedBy="eidEleveAppartenir")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Eleve", mappedBy="eidEleveAppartenir")
      */
     public $eidClasse;
 
@@ -220,6 +220,537 @@ class Eleve
         $this->eidPaysChoix = new \Doctrine\Common\Collections\ArrayCollection();
         $this->eidEtablissement = new \Doctrine\Common\Collections\ArrayCollection();
     }
+    public function getIdEleve()
+    {
+        return $this->idEleve;
+    }
+    /**
+     * Set commentairesUcape
+     *
+     * @param string $commentairesUcape
+     *
+     * @return Eleve
+     */
+    public function setCommentairesUcape($commentairesUcape)
+    {
+        $this->commentairesUcape = $commentairesUcape;
 
+        return $this;
+    }
+
+    /**
+     * Get commentairesUcape
+     *
+     * @return string
+     */
+    public function getCommentairesUcape()
+    {
+        return $this->commentairesUcape;
+    }
+        /**
+     * Set mentionUcape
+     *
+     * @param string $mentionUcape
+     *
+     * @return Eleve
+     */
+    public function setMentionUcape($mentionUcape)
+    {
+        $this->mentionUcape = $mentionUcape;
+
+        return $this;
+    }
+    /**
+     * Get mentionUcape
+     *
+     * @return string
+     */
+    public function getMentionUcape()
+    {
+        return $this->mentionUcape;
+    }
+    /**
+     * Set obtentionDiplomeUcape
+     *
+     * @param boolean $obtentionDiplomeUcape
+     *
+     * @return Eleve
+     */
+    public function setObtentionDiplomeUcape($obtentionDiplomeUcape)
+    {
+        $this->obtentionDiplomeUcape = $obtentionDiplomeUcape;
+
+        return $this;
+    }
+
+    /**
+     * Get obtentionDiplomeUcape
+     *
+     * @return boolean
+     */
+    public function getObtentionDiplomeUcape()
+    {
+        return $this->obtentionDiplomeUcape;
+    }
+    /**
+     * Set ue1AppreciationsUcape
+     *
+     * @param string $ue1AppreciationsUcape
+     *
+     * @return Eleve
+     */
+    public function setUe1AppreciationsUcape($ue1AppreciationsUcape)
+    {
+        $this->ue1AppreciationsUcape = $ue1AppreciationsUcape;
+
+        return $this;
+    }
+
+    /**
+     * Get ue1AppreciationsUcape
+     *
+     * @return string
+     */
+    public function getUe1AppreciationsUcape()
+    {
+        return $this->ue1AppreciationsUcape;
+    }
+        /**
+     * Set ue1NoteUcape
+     *
+     * @param float $ue1NoteUcape
+     *
+     * @return Eleve
+     */
+    public function setUe1NoteUcape($ue1NoteUcape)
+    {
+        $this->ue1NoteUcape = $ue1NoteUcape;
+
+        return $this;
+    }
+
+    /**
+     * Get ue1NoteUcape
+     *
+     * @return float
+     */
+    public function getUe1NoteUcape()
+    {
+        return $this->ue1NoteUcape;
+    }
+    /**
+     * Set ue1DateUcape
+     *
+     * @param \DateTime $ue1DateUcape
+     *
+     * @return Eleve
+     */
+    public function setUe1DateUcape($ue1DateUcape)
+    {
+        $this->ue1DateUcape = $ue1DateUcape;
+
+        return $this;
+    }
+
+    /**
+     * Get ue1DateUcape
+     *
+     * @return \DateTime
+     */
+    public function getUe1DateUcape()
+    {
+        return $this->ue1DateUcape;
+    }
+    /**
+     * Set commentairesUcape
+     *
+     * @param string $commentairesUcape
+     *
+     * @return Eleve
+     */
+    public function setTypeEleve($typeEleve)
+    {
+        $this->typeEleve = $typeEleve;
+
+        return $this;
+    }
+
+    /**
+     * Get typeEleve
+     *
+     * @return string
+     */
+    public function getTypeEleve()
+    {
+        return $this->typeEleve;
+    }
+    /**
+     * Set ue2AppreciationsEleve
+     *
+     * @param string $ue2AppreciationsEleve
+     *
+     * @return Eleve
+     */
+    public function setUe2AppreciationsEleve($ue2AppreciationsEleve)
+    {
+        $this->ue2AppreciationsEleve = $ue2AppreciationsEleve;
+
+        return $this;
+    }
+
+    /**
+     * Get ue2AppreciationsEleve
+     *
+     * @return string
+     */
+    public function getUe2AppreciationsEleve()
+    {
+        return $this->ue2AppreciationsEleve;
+    }
+    /**
+     * Set ue2NoteEleve
+     *
+     * @param float $ue2NoteEleve
+     *
+     * @return Eleve
+     */
+    public function setUe2NoteEleve($ue2NoteEleve)
+    {
+        $this->ue2NoteEleve = $ue2NoteEleve;
+
+        return $this;
+    }
+
+    /**
+     * Get ue2NoteEleve
+     *
+     * @return float
+     */
+    public function getUe2NoteEleve()
+    {
+        return $this->ue2NoteEleve;
+    }
+    /**
+     * Set ue2ThemeDossierEleve
+     *
+     * @param string $ue2ThemeDossierEleve
+     *
+     * @return Eleve
+     */
+    public function setUe2ThemeDossierEleve($ue2ThemeDossierEleve)
+    {
+        $this->ue2ThemeDossierEleve = $ue2ThemeDossierEleve;
+
+        return $this;
+    }
+
+    /**
+     * Get ue2ThemeDossierEleve
+     *
+     * @return string
+     */
+    public function getUe2ThemeDossierEleve()
+    {
+        return $this->ue2ThemeDossierEleve;
+    }
+    /**
+     * Set ue2DateEleve
+     *
+     * @param \DateTime $ue2DateEleve
+     *
+     * @return Eleve
+     */
+    public function setUe2DateEleve($ue2DateEleve)
+    {
+        $this->ue2DateEleve = $ue2DateEleve;
+
+        return $this;
+    }
+
+    /**
+     * Get ue2DateEleve
+     *
+     * @return \DateTime
+     */
+    public function getUe2DateEleve()
+    {
+        return $this->ue2DateEleve;
+    }
+    /**
+     * Set visaParentEleve
+     *
+     * @param boolean $visaParentEleve
+     *
+     * @return Eleve
+     */
+    public function setVisaParentEleve($visaParentEleve)
+    {
+        $this->visaParentEleve = $visaParentEleve;
+
+        return $this;
+    }
+
+    /**
+     * Get visaParentEleve
+     *
+     * @return boolean
+     */
+    public function getVisaParentEleve()
+    {
+        return $this->visaParentEleve;
+    }
+    /**
+     * Set commentairesChoixEleve
+     *
+     * @param string $commentairesChoixEleve
+     *
+     * @return Eleve
+     */
+    public function setCommentairesChoixEleve($commentairesChoixEleve)
+    {
+        $this->commentairesChoixEleve = $commentairesChoixEleve;
+
+        return $this;
+    }
+
+    /**
+     * Get commentairesChoixEleve
+     *
+     * @return string
+     */
+    public function getCommentairesChoixEleve()
+    {
+        return $this->commentairesChoixEleve;
+    }
+    /**
+     * Set terreDesLanguesEleve
+     *
+     * @param boolean $terreDesLanguesEleve
+     *
+     * @return Eleve
+     */
+    public function setTerreDesLanguesEleve($terreDesLanguesEleve)
+    {
+        $this->terreDesLanguesEleve = $terreDesLanguesEleve;
+
+        return $this;
+    }
+
+    /**
+     * Get terreDesLanguesEleve
+     *
+     * @return boolean
+     */
+    public function getTerreDesLanguesEleve()
+    {
+        return $this->terreDesLanguesEleve;
+    }
+    /**
+     * Set commentairesGeneralEleve
+     *
+     * @param string $commentairesGeneralEleve
+     *
+     * @return Eleve
+     */
+    public function setCommentairesGeneralEleve($commentairesGeneralEleve)
+    {
+        $this->commentairesGeneralEleve = $commentairesGeneralEleve;
+
+        return $this;
+    }
+
+    /**
+     * Get commentairesGeneralEleve
+     *
+     * @return string
+     */
+    public function getCommentairesGeneralEleve()
+    {
+        return $this->commentairesGeneralEleve;
+    }
+    /**
+     * Set motDePasseEleve
+     *
+     * @param string $motDePasseEleve
+     *
+     * @return Eleve
+     */
+    public function setMotDePasseEleve($motDePasseEleve)
+    {
+        $this->motDePasseEleve = $motDePasseEleve;
+
+        return $this;
+    }
+
+    /**
+     * Get motDePasseEleve
+     *
+     * @return string
+     */
+    public function getMotDePasseEleve()
+    {
+        return $this->motDePasseEleve;
+    }
+    /**
+     * Set emailParentEleve
+     *
+     * @param string $emailParentEleve
+     *
+     * @return Eleve
+     */
+    public function setEmailParentEleve($emailParentEleve)
+    {
+        $this->emailParentEleve = $emailParentEleve;
+
+        return $this;
+    }
+
+    /**
+     * Get emailParentEleve
+     *
+     * @return string
+     */
+    public function getEmailParentEleve()
+    {
+        return $this->emailParentEleve;
+    }
+    /**
+     * Set emailEleve
+     *
+     * @param string $emailEleve
+     *
+     * @return Eleve
+     */
+    public function setEmailEleve($emailEleve)
+    {
+        $this->emailEleve = $emailEleve;
+
+        return $this;
+    }
+
+    /**
+     * Get emailEleve
+     *
+     * @return string
+     */
+    public function getEmailEleve()
+    {
+        return $this->emailEleve;
+    }
+    /**
+     * Set promoEleve
+     *
+     * @param integer $promoEleve
+     *
+     * @return Eleve
+     */
+    public function setPromoEleve($promoEleve)
+    {
+        $this->promoEleve = $promoEleve;
+
+        return $this;
+    }
+
+    /**
+     * Get promoEleve
+     *
+     * @return integer
+     */
+    public function getPromoEleve()
+    {
+        return $this->promoEleve;
+    }
+    /**
+     * Set dateNaissEleve
+     *
+     * @param \DateTime $dateNaissEleve
+     *
+     * @return Eleve
+     */
+    public function setDateNaissEleve($dateNaissEleve)
+    {
+        $this->dateNaissEleve = $dateNaissEleve;
+
+        return $this;
+    }
+
+    /**
+     * Get dateNaissEleve
+     *
+     * @return \DateTime
+     */
+    public function getDateNaissEleve()
+    {
+        return $this->dateNaissEleve;
+    }
+    /**
+     * Set sexeEleve
+     *
+     * @param string $sexeEleve
+     *
+     * @return Eleve
+     */
+    public function setSexeEleve($sexeEleve)
+    {
+        $this->sexeEleve = $sexeEleve;
+
+        return $this;
+    }
+
+    /**
+     * Get commentairesUcape
+     *
+     * @return string
+     */
+    public function getSexeEleve()
+    {
+        return $this->sexeEleve;
+    }
+    /**
+     * Set prenomEleve
+     *
+     * @param string $prenomEleve
+     *
+     * @return Eleve
+     */
+    public function setPrenomEleve($prenomEleve)
+    {
+        $this->prenomEleve = $prenomEleve;
+
+        return $this;
+    }
+
+    /**
+     * Get prenomEleve
+     *
+     * @return string
+     */
+    public function getPrenomEleve()
+    {
+        return $this->prenomEleve;
+    }
+    /**
+     * Set nomEleve
+     *
+     * @param string $nomEleve
+     *
+     * @return Eleve
+     */
+    public function setNomEleve($nomEleve)
+    {
+        $this->nomEleve = $nomEleve;
+
+        return $this;
+    }
+
+    /**
+     * Get nomEleve
+     *
+     * @return string
+     */
+    public function getNomEleve()
+    {
+        return $this->nomEleve;
+    }
 }
 
