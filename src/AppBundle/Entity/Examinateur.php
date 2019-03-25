@@ -34,7 +34,7 @@ class Examinateur
     private $telephoneExaminateur;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id_examinateur", type="integer")
      * @ORM\Id
@@ -51,8 +51,7 @@ class Examinateur
      * })
      */
     private $eidLangueExaminateur;
-
-        
+    
     /**
      * Get nomExaminateur
      *
@@ -160,8 +159,5 @@ class Examinateur
         
         return $this;
     }
-    
-    
 
 }
-

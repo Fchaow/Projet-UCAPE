@@ -5,77 +5,70 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Etablisement
+ * Etablissement
  *
- * @ORM\Table(name="etablisement", indexes={@ORM\Index(name="Eid_pays", columns={"Eid_pays"})})
+ * @ORM\Table(name="etablissement", indexes={@ORM\Index(name="Eid_pays", columns={"Eid_pays"})})
  * @ORM\Entity
  */
-class Etablisement
+class Etablissement
 {
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="libelle_etablissement", type="string", length=50, nullable=false)
-     */
-    public $libelleEtablissement;
-
     /**
      * @var string
      *
      * @ORM\Column(name="nom_etablissement", type="string", length=50, nullable=false)
      */
-    public $nomEtablissement;
+    private $nomEtablissement;
 
     /**
      * @var string
      *
      * @ORM\Column(name="tel_etablissement", type="string", length=50, nullable=false)
      */
-    public $telEtablissement;
+    private $telEtablissement;
 
     /**
      * @var string
      *
      * @ORM\Column(name="email_etablissement", type="string", length=50, nullable=false)
      */
-    public $emailEtablissement;
+    private $emailEtablissement;
 
     /**
      * @var string
      *
      * @ORM\Column(name="responsable_etablissement", type="string", length=50, nullable=false)
      */
-    public $responsableEtablissement;
+    private $responsableEtablissement;
 
     /**
      * @var string
      *
      * @ORM\Column(name="numero_etablissement", type="string", length=50, nullable=false)
      */
-    public $numeroEtablissement;
+    private $numeroEtablissement;
 
     /**
      * @var string
      *
      * @ORM\Column(name="rue_etablissement", type="string", length=50, nullable=false)
      */
-    public $rueEtablissement;
+    private $rueEtablissement;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ville_etablissement", type="string", length=50, nullable=false)
      */
-    public $villeEtablissement;
+    private $villeEtablissement;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id_etablissement", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    public $idEtablissement;
+    private $idEtablissement;
 
     /**
      * @var \AppBundle\Entity\Pays
@@ -85,14 +78,14 @@ class Etablisement
      *   @ORM\JoinColumn(name="Eid_pays", referencedColumnName="id_pays")
      * })
      */
-    public $eidPays;
+    private $eidPays;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Eleve", mappedBy="eidEtablissement")
      */
-    public $eidEleveProposition;
+    private $eidEleveProposition;
 
     /**
      * Constructor
@@ -294,5 +287,5 @@ class Etablisement
     {
         return $this->libelleEtablissement;
     }
-}
 
+}

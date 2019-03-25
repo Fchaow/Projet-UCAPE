@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Passer
  *
- * @ORM\Table(name="passer", indexes={@ORM\Index(name="Eid_langue_passer", columns={"Eid_langue_passer"}), @ORM\Index(name="Eid_examinateur", columns={"Eid_examinateur"}), @ORM\Index(name="Eid_eleve_passer", columns={"Eid_eleve_passer"})})
+ * @ORM\Table(name="passer", indexes={@ORM\Index(name="Eid_examinateur", columns={"Eid_examinateur"}), @ORM\Index(name="Eid_langue_passer", columns={"Eid_langue_passer"}), @ORM\Index(name="Eid_eleve_passer", columns={"Eid_eleve_passer"})})
  * @ORM\Entity
  */
 class Passer
@@ -68,8 +68,8 @@ class Passer
      * })
      */
     private $eidLanguePasser;
-    
-    /**
+
+        /**
      * Get datePasser
      *
      * @return date
@@ -149,7 +149,4 @@ class Passer
         
         return $this;
     }
-
-
 }
-
