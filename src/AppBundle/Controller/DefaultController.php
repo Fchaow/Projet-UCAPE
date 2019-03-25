@@ -8,10 +8,13 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 use AppBundle\Entity\Eleve;
-
 use AppBundle\Entity\Etablisement;
+use AppBundle\Entity\Pays;
+use AppBundle\Form\PaysType;
+use AppBundle\Form\EtablissementType;
+use AppBundle\Form\EleveType;
 
-
+use Appbundle\Service\FormulaireManager;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -74,93 +77,23 @@ class DefaultController extends Controller
 
     {
 
-        // On crée un objet Advert
-
         $eleve = new Eleve();
-
-
-        // On crée le FormBuilder grâce au service form factory
-
-        $form = $this->get('form.factory')->createBuilder(FormType::class, $eleve)
-
-
-        // On ajoute les champs de l'entité que l'on veut à notre formulaire
-
-
-            ->add('nomEleve')
-            ->add('prenomEleve')
-            ->add('sexeEleve')
-            ->add('dateNaissEleve')
-            ->add('promoEleve')
-            ->add('emailEleve')
-            ->add('emailParentEleve')
-            ->add('motDePasseEleve')
-            ->add('commentairesGeneralEleve')
-            ->add('terreDesLanguesEleve')
-            ->add('commentairesChoixEleve')
-            ->add('visaParentEleve')
-            ->add('ue2DateEleve')
-            ->add('ue2ThemeDossierEleve')
-            ->add('ue2NoteEleve')
-            ->add('ue2AppreciationsEleve')
-            ->add('typeEleve')
-            ->add('ue1DateUcape')
-            ->add('ue1NoteUcape')
-            ->add('ue1AppreciationsUcape')
-            ->add('obtentionDiplomeUcape')
-            ->add('mentionUcape')
-            ->add('commentairesUcape')
-            ->add('Valider', SubmitType::class)
-            ->getForm()
-
-        ;
         
-        // Si la requête est en POST
+        $formEleve = $this->createForm('AppBundle\Form\EleveType', $eleve);
+        
+        $formEleve->handleRequest($request);
 
-    if ($request->isMethod('POST')) {
-
-      // On fait le lien Requête <-> Formulaire
-
-      // À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
-
-      $form->handleRequest($request);
-
-
-      // On vérifie que les valeurs entrées sont correctes
-
-      // (Nous verrons la validation des objets en détail dans le prochain chapitre)
-
-      if ($form->isValid()) {
-
-        // On enregistre notre objet $advert dans la base de données, par exemple
-
-        $em = $this->getDoctrine()->getManager();
-
-        $em->persist($eleve);
-
-        $em->flush();
-
-
-        $request->getSession()->getFlashBag()->add('notice', 'Eleve bien enregistrée.');
-
-
-      }
-
-    }
-
-        // À partir du formBuilder, on génère le formulaire
-
-        //$form = $formBuilder->getForm();
-
-        // On passe la méthode createView() du formulaire à la vue
-
-        // afin qu'elle puisse afficher le formulaire toute seule
-
-        return $this->render('FormEleve.html.twig', array(
-
-          'form' => $form->createView(),
-
-        ));
+        if ($formEleve->isSubmitted() && $formEleve->isValid())
+        {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($eleve);
+            $manager->flush();
+        }
+        $request->getSession()->getFlashBag()->add('notice', 'eleve bien enregistré.');
+        
+        return $this->render('FormEleve.html.twig', [
+            'formEleve' => $formEleve->createView()
+            ]);
 
     }
     
@@ -172,79 +105,56 @@ class DefaultController extends Controller
     public function form2Action(Request $request)
 
     {
-
-        // On crée un objet Advert
-
-        $etablisement = new Etablisement();
-
-
-        // On crée le FormBuilder grâce au service form factory
-
-        $form2 = $this->get('form.factory')->createBuilder(FormType::class, $etablisement)
-
-
-        // On ajoute les champs de l'entité que l'on veut à notre formulaire
-
-
-            ->add('libelleEtablissement')
-            ->add('nomEtablissement')
-            ->add('telEtablissement')
-            ->add('emailEtablissement')
-            ->add('responsableEtablissement')
-            ->add('numeroEtablissement')
-            ->add('rueEtablissement')
-            ->add('villeEtablissement')
-            ->add('Valider', SubmitType::class)
-            ->getForm()
-
-        ;
+        $etablissement = new Etablisement();
         
-        // Si la requête est en POST
+        $formEtablissement = $this->createForm('AppBundle\Form\EtablissementType', $etablissement);
+        
+        $formEtablissement->handleRequest($request);
 
-    if ($request->isMethod('POST')) {
-
-      // On fait le lien Requête <-> Formulaire
-
-      // À partir de maintenant, la variable $advert contient les valeurs entrées dans le formulaire par le visiteur
-
-      $form2->handleRequest($request);
-
-
-      // On vérifie que les valeurs entrées sont correctes
-
-      // (Nous verrons la validation des objets en détail dans le prochain chapitre)
-
-      if ($form2->isValid()) {
-
-        // On enregistre notre objet $advert dans la base de données, par exemple
-
-        $em = $this->getDoctrine()->getManager();
-
-        $em->persist($etablisement);
-
-        $em->flush();
-
-
-        $request->getSession()->getFlashBag()->add('notice', 'Etablissement bien enregistrée.');
-
-
-      }
+        if ($formEtablissement->isSubmitted() && $formEtablissement->isValid())
+        {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($etablisement);
+            $manager->flush();
+        }
+        $request->getSession()->getFlashBag()->add('notice', 'Etablissement bien enregistré.');
+        
+        return $this->render('FormEtablis.html.twig', [
+            'formEtablissement' => $formEtablissement->createView()
+            ]);
+        
 
     }
+    
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/formPays", name="formPays")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     */
+    
+    public function formPaysAction(Request $request)
+    {
+        $pays = new Pays();
+        
+        $formPays = $this->createForm('AppBundle\Form\PaysType', $pays);
+        
+        $formPays->handleRequest($request);
 
-        // À partir du formBuilder, on génère le formulaire
-
-        //$form = $formBuilder->getForm();
-
-        // On passe la méthode createView() du formulaire à la vue
-
-        // afin qu'elle puisse afficher le formulaire toute seule
-
-        return $this->render('FormEtablis.html.twig', array(
-
-          'form2' => $form2->createView(),
-
-        ));
-
+        if ($formPays->isSubmitted() && $formPays->isValid())
+        {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($pays);
+            $manager->flush();
+        }
+        $request->getSession()->getFlashBag()->add('notice', 'Pays bien enregistré.');
+        
+        return $this->render('FormPays.html.twig', [
+            'formPays' => $formPays->createView()
+            ]);
+    }
+    
+    public function formChoixAction(Request $request)
+    {
+        
     }
 }
