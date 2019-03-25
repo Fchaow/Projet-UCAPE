@@ -20,7 +20,7 @@ class Classe
     private $libelleClasse;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id_classe", type="integer")
      * @ORM\Id
@@ -28,28 +28,6 @@ class Classe
      */
     private $idClasse;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Eleve", inversedBy="eidClasse")
-     * @ORM\JoinTable(name="appartenir",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="Eid_classe", referencedColumnName="id_classe")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="Eid_eleve_appartenir", referencedColumnName="id_eleve")
-     *   }
-     * )
-     */
-    private $eidEleveAppartenir;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->eidEleveAppartenir = new \Doctrine\Common\Collections\ArrayCollection();
-    }
     public function getIdClasse()
     {
         return $this->idClasse;
@@ -77,5 +55,5 @@ class Classe
     {
         return $this->libelleClasse;
     }
-}
 
+}

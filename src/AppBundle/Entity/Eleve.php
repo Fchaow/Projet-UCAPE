@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Eleve
  *
- * @ORM\Table(name="eleve")
+ * @ORM\Table(name="eleve", indexes={@ORM\Index(name="Eid_classe", columns={"Eid_classe"})})
  * @ORM\Entity
  */
 class Eleve
@@ -17,189 +17,206 @@ class Eleve
      *
      * @ORM\Column(name="nom_eleve", type="string", length=50, nullable=false)
      */
-    public $nomEleve;
+    private $nomEleve;
 
     /**
      * @var string
      *
      * @ORM\Column(name="prenom_eleve", type="string", length=50, nullable=false)
      */
-    public $prenomEleve;
+    private $prenomEleve;
 
     /**
      * @var string
      *
      * @ORM\Column(name="sexe_eleve", type="string", length=50, nullable=false)
      */
-    public $sexeEleve;
+    private $sexeEleve;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_naiss_eleve", type="date", nullable=false)
      */
-    public $dateNaissEleve;
+    private $dateNaissEleve;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="promo_eleve", type="integer", nullable=false)
      */
-    public $promoEleve;
+    private $promoEleve;
 
     /**
      * @var string
      *
      * @ORM\Column(name="email_eleve", type="string", length=50, nullable=false)
      */
-    public $emailEleve;
+    private $emailEleve;
 
     /**
      * @var string
      *
      * @ORM\Column(name="email_parent_eleve", type="string", length=50, nullable=false)
      */
-    public $emailParentEleve;
+    private $emailParentEleve;
 
     /**
      * @var string
      *
      * @ORM\Column(name="mot_de_passe_eleve", type="string", length=50, nullable=false)
      */
-    public $motDePasseEleve;
+    private $motDePasseEleve;
 
     /**
      * @var string
      *
      * @ORM\Column(name="commentaires_general_eleve", type="text", length=65535, nullable=false)
      */
-    public $commentairesGeneralEleve;
+    private $commentairesGeneralEleve;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(name="terre_des_langues_eleve", type="boolean", nullable=false)
      */
-    public $terreDesLanguesEleve;
+    private $terreDesLanguesEleve;
 
     /**
      * @var string
      *
      * @ORM\Column(name="commentaires_choix_eleve", type="text", length=65535, nullable=false)
      */
-    public $commentairesChoixEleve;
+    private $commentairesChoixEleve;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(name="visa_parent_eleve", type="boolean", nullable=false)
      */
-    public $visaParentEleve;
+    private $visaParentEleve;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="UE2_date_eleve", type="date", nullable=false)
      */
-    public $ue2DateEleve;
+    private $ue2DateEleve;
 
     /**
      * @var string
      *
      * @ORM\Column(name="UE2_theme_dossier_eleve", type="string", length=50, nullable=false)
      */
-    public $ue2ThemeDossierEleve;
+    private $ue2ThemeDossierEleve;
 
     /**
      * @var float
      *
      * @ORM\Column(name="UE2_note_eleve", type="float", precision=10, scale=0, nullable=false)
      */
-    public $ue2NoteEleve;
+    private $ue2NoteEleve;
 
     /**
      * @var string
      *
      * @ORM\Column(name="UE2_appreciations_eleve", type="text", length=65535, nullable=false)
      */
-    public $ue2AppreciationsEleve;
+    private $ue2AppreciationsEleve;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="type_eleve", type="string", length=1, nullable=false)
+     * @ORM\Column(name="type_eleve", type="string", length=1, nullable=false, options={"fixed"=true})
      */
-    public $typeEleve;
+    private $typeEleve;
+
+    /**
+     * @var \DateTime|null
+     *
+     * @ORM\Column(name="UE1_date_ucape", type="date", nullable=true)
+     */
+    private $ue1DateUcape;
+
+    /**
+     * @var float|null
+     *
+     * @ORM\Column(name="UE1_note_ucape", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $ue1NoteUcape;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="UE1_appreciations_ucape", type="text", length=65535, nullable=true)
+     */
+    private $ue1AppreciationsUcape;
+
+    /**
+     * @var bool|null
+     *
+     * @ORM\Column(name="obtention_diplome_ucape", type="boolean", nullable=true)
+     */
+    private $obtentionDiplomeUcape;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="mention_ucape", type="string", length=50, nullable=true)
+     */
+    private $mentionUcape;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="commentaires_ucape", type="text", length=65535, nullable=true)
+     */
+    private $commentairesUcape;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="aVoyage", type="boolean", nullable=false)
+     */
+    private $avoyage;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="UE1_date_ucape", type="date", nullable=true)
+     * @ORM\Column(name="anneeEntreePromo", type="date", nullable=false)
      */
-    public $ue1DateUcape;
+    private $anneeentreepromo;
 
     /**
-     * @var float
-     *
-     * @ORM\Column(name="UE1_note_ucape", type="float", precision=10, scale=0, nullable=true)
-     */
-    public $ue1NoteUcape;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="UE1_appreciations_ucape", type="text", length=65535, nullable=true)
-     */
-    public $ue1AppreciationsUcape;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="obtention_diplome_ucape", type="boolean", nullable=true)
-     */
-    public $obtentionDiplomeUcape;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="mention_ucape", type="string", length=50, nullable=true)
-     */
-    public $mentionUcape;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="commentaires_ucape", type="text", length=65535, nullable=true)
-     */
-    public $commentairesUcape;
-
-    /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id_eleve", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    public $idEleve;
+    private $idEleve;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var \AppBundle\Entity\Classe
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Eleve", mappedBy="eidEleveAppartenir")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Classe")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Eid_classe", referencedColumnName="id_classe")
+     * })
      */
-    public $eidClasse;
+    private $eidClasse;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Pays", mappedBy="eidEleveChoix")
      */
-    public $eidPaysChoix;
+    private $eidPaysChoix;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Etablisement", inversedBy="eidEleveProposition")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Etablissement", inversedBy="eidEleveProposition")
      * @ORM\JoinTable(name="proposition",
      *   joinColumns={
      *     @ORM\JoinColumn(name="Eid_eleve_proposition", referencedColumnName="id_eleve")
@@ -209,7 +226,7 @@ class Eleve
      *   }
      * )
      */
-    public $eidEtablissement;
+    private $eidEtablissement;
 
     /**
      * Constructor
@@ -752,5 +769,51 @@ class Eleve
     {
         return $this->nomEleve;
     }
-}
+    /**
+     * Set avoyage
+     *
+     * @param bool $avoyage
+     *
+     * @return Eleve
+     */
+    public function setAvoyage($avoyage)
+    {
+        $this->avoyage = $avoyage;
 
+        return $this;
+    }
+
+    /**
+     * Get avoyage
+     *
+     * @return string
+     */
+    public function getAvoyage()
+    {
+        return $this->avoyage;
+    }
+    /**
+     * Set anneeentreepromo
+     *
+     * @param string $anneeentreepromo
+     *
+     * @return Eleve
+     */
+    public function setAnneeentreepromo($anneeentreepromo)
+    {
+        $this->anneeentreepromo = $anneeentreepromo;
+
+        return $this;
+    }
+
+    /**
+     * Get anneeentreepromo
+     *
+     * @return string
+     */
+    public function getAnneeentreepromo()
+    {
+        return $this->anneeentreepromo;
+    }
+
+}

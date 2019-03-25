@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Parametre
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="annee_promo_para", type="integer", nullable=false)
      */
@@ -34,14 +34,14 @@ class Parametre
     private $cheminDspPara;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id_para", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idPara;
-    
+
     /**
      * Get anneePromoPara
      *
@@ -149,7 +149,4 @@ class Parametre
         
         return $this;
     }
-
-
 }
-

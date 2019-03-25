@@ -20,14 +20,14 @@ class Langue
     private $libelleLangue;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id_langue", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idLangue;
-    
+
     /**
      * Get idLangue
      *
@@ -81,7 +81,4 @@ class Langue
         
         return $this;
     }
-
-
 }
-

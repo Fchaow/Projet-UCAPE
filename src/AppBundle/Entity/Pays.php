@@ -20,7 +20,7 @@ class Pays
     private $libellePays;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id_pays", type="integer")
      * @ORM\Id
@@ -50,7 +50,7 @@ class Pays
     {
         $this->eidEleveChoix = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     /**
      *Get libellePays
      *
@@ -104,6 +104,4 @@ class Pays
         
         return $this;
     }
-
 }
-
