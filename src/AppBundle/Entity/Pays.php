@@ -8,100 +8,89 @@ use Doctrine\ORM\Mapping as ORM;
  * Pays
  *
  * @ORM\Table(name="pays")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\PaysRepository")
  */
 class Pays
 {
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="libelle_pays", type="string", length=50, nullable=false)
-     */
-    private $libellePays;
-
     /**
      * @var int
      *
      * @ORM\Column(name="id_pays", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $idPays;
+    private $id;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var string
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Eleve", inversedBy="eidPaysChoix")
-     * @ORM\JoinTable(name="choix",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="Eid_pays_choix", referencedColumnName="id_pays")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="Eid_eleve_choix", referencedColumnName="id_eleve")
-     *   }
-     * )
+     * @ORM\Column(name="libelle_pays", type="string", length=255)
      */
-    private $eidEleveChoix;
+    private $libellePays;
 
     /**
-     * Constructor
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Choix", mappedBy="pays")
+    */
+    private $choix;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Etablissement", mappedBy="pays")
+    */
+    private $etablissement;
+
+    /**
+     * Get id.
+     *
+     * @return int
      */
-    public function __construct()
+    public function getId()
     {
-        $this->eidEleveChoix = new \Doctrine\Common\Collections\ArrayCollection();
+        return $this->id;
     }
 
     /**
-     *Get libellePays
+     * Set libellePays.
      *
-     *@return string
+     * @param string $libellePays
+     *
+     * @return Pays
      */
-    
+    public function setLibellePays($libellePays)
+    {
+        $this->libellePays = $libellePays;
+
+        return $this;
+    }
+
+    /**
+     * Get libellePays.
+     *
+     * @return string
+     */
     public function getLibellePays()
     {
         return $this->libellePays;
     }
-    
-    /**
-     *Set libellePays
-     *
-     * @param string libellePays
-     *
-     * @return Pays
-     *
-     */
-    
-    public function setLibellePays($libellePays)
+
+    public function setChoix($choix)
     {
-        $this->libellePays = $libellePays;
-        
+        $this->choix = $choix;
+
         return $this;
     }
-    
-    /**
-     * Get idPays
-     *
-     * @return int
-     */
-    
-    public function getIdPays()
+    public function getChoix()
     {
-        return $this->idPays;
+        return $this->choix;
     }
-    
-    /**
-     * Set idPays
-     *
-     * @param int idPays
-     *
-     * @return Pays
-     *
-     */
-    
-    public function setIdPays($idPays)
+
+    public function setEtablissement($etablissement)
     {
-        $this->idPays = $idPays;
-        
+        $this->etablissement = $etablissement;
+
         return $this;
+    }
+    public function getEtablissement()
+    {
+        return $this->etablissement;
     }
 }

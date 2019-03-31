@@ -7,246 +7,97 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Etablissement
  *
- * @ORM\Table(name="etablissement", indexes={@ORM\Index(name="Eid_pays", columns={"Eid_pays"})})
- * @ORM\Entity
+ * @ORM\Table(name="etablissement")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\EtablissementRepository")
  */
 class Etablissement
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id_etablissement", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="nom_etablissement", type="string", length=50, nullable=false)
+     * @ORM\Column(name="nom_etablissement", type="string", length=255)
      */
     private $nomEtablissement;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="tel_etablissement", type="string", length=50, nullable=false)
+     * @ORM\Column(name="tel_etablissement", type="string", length=255)
      */
     private $telEtablissement;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email_etablissement", type="string", length=50, nullable=false)
+     * @ORM\Column(name="email_etablissement", type="string", length=255)
      */
     private $emailEtablissement;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="responsable_etablissement", type="string", length=50, nullable=false)
+     * @ORM\Column(name="responsable_etablissement", type="string", length=255)
      */
     private $responsableEtablissement;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="numero_etablissement", type="string", length=50, nullable=false)
+     * @ORM\Column(name="numero_etablissement", type="string", length=255)
      */
     private $numeroEtablissement;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="rue_etablissement", type="string", length=50, nullable=false)
+     * @ORM\Column(name="rue_etablissement", type="string", length=255)
      */
     private $rueEtablissement;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ville_etablissement", type="string", length=50, nullable=false)
+     * @ORM\Column(name="ville_etablissement", type="string", length=255)
      */
     private $villeEtablissement;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id_etablissement", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idEtablissement;
+     * @ORM\ManyToOne(targetEntity="Pays", inversedBy="etablissement")
+     * @ORM\JoinColumn(name="Eid_pays", referencedColumnName="id_pays")
+    */
+    private $pays;
 
     /**
-     * @var \AppBundle\Entity\Pays
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Pays")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Eid_pays", referencedColumnName="id_pays")
-     * })
-     */
-    private $eidPays;
+     * @ORM\OneToMany(targetEntity="Proposition", mappedBy="etablissements")
+    */
+    private $proposition;
+
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Eleve", mappedBy="eidEtablissement")
-     */
-    private $eidEleveProposition;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->eidEleveProposition = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    /**
-     * Get idEtablissement
+     * Get id.
      *
      * @return int
      */
-    public function getIdEtablissement()
+    public function getId()
     {
-        return $this->idEtablissement;
-    }
-    /**
-     * Set villeEtablissement
-     *
-     * @param string $villeEtablissement
-     *
-     * @return Etablisement
-     */
-    public function setVilleEtablissement($villeEtablissement)
-    {
-        $this->villeEtablissement = $villeEtablissement;
-
-        return $this;
+        return $this->id;
     }
 
     /**
-     * Get villeEtablissement
-     *
-     * @return string
-     */
-    public function getVilleEtablissement()
-    {
-        return $this->villeEtablissement;
-    }
-    /**
-     * Set rueEtablissement
-     *
-     * @param string $rueEtablissement
-     *
-     * @return Etablisement
-     */
-    public function setRueEtablissement($rueEtablissement)
-    {
-        $this->rueEtablissement = $rueEtablissement;
-
-        return $this;
-    }
-
-    /**
-     * Get rueEtablissement
-     *
-     * @return string
-     */
-    public function getRueEtablissement()
-    {
-        return $this->rueEtablissement;
-    }
-    /**
-     * Set numeroEtablissement
-     *
-     * @param string $numeroEtablissement
-     *
-     * @return Etablisement
-     */
-    public function setNumeroEtablissement($numeroEtablissement)
-    {
-        $this->numeroEtablissement = $numeroEtablissement;
-
-        return $this;
-    }
-
-    /**
-     * Get numeroEtablissement
-     *
-     * @return string
-     */
-    public function getNumeroEtablissement()
-    {
-        return $this->numeroEtablissement;
-    }
-    /**
-     * Set responsableEtablissement
-     *
-     * @param string $responsableEtablissement
-     *
-     * @return Etablisement
-     */
-    public function setResponsableEtablissement($responsableEtablissement)
-    {
-        $this->responsableEtablissement = $responsableEtablissement;
-
-        return $this;
-    }
-
-    /**
-     * Get responsableEtablissement
-     *
-     * @return string
-     */
-    public function getResponsableEtablissement()
-    {
-        return $this->responsableEtablissement;
-    }
-    /**
-     * Set emailEtablissement
-     *
-     * @param string $emailEtablissement
-     *
-     * @return Etablisement
-     */
-    public function setEmailEtablissement($emailEtablissement)
-    {
-        $this->emailEtablissement = $emailEtablissement;
-
-        return $this;
-    }
-
-    /**
-     * Get emailEtablissement
-     *
-     * @return string
-     */
-    public function getEmailEtablissement()
-    {
-        return $this->emailEtablissement;
-    }
-    /**
-     * Set telEtablissement
-     *
-     * @param string $telEtablissement
-     *
-     * @return Etablisement
-     */
-    public function setTelEtablissement($telEtablissement)
-    {
-        $this->telEtablissement = $telEtablissement;
-
-        return $this;
-    }
-
-    /**
-     * Get telEtablissement
-     *
-     * @return string
-     */
-    public function getTelEtablissement()
-    {
-        return $this->telEtablissement;
-    }
-    /**
-     * Set nomEtablissement
+     * Set nomEtablissement.
      *
      * @param string $nomEtablissement
      *
-     * @return Etablisement
+     * @return Etablissement
      */
     public function setNomEtablissement($nomEtablissement)
     {
@@ -256,7 +107,7 @@ class Etablissement
     }
 
     /**
-     * Get nomEtablissement
+     * Get nomEtablissement.
      *
      * @return string
      */
@@ -264,28 +115,170 @@ class Etablissement
     {
         return $this->nomEtablissement;
     }
+
     /**
-     * Set libelleEtablissement
+     * Set telEtablissement.
      *
-     * @param string $libelleEtablissement
+     * @param string $telEtablissement
      *
-     * @return Etablisement
+     * @return Etablissement
      */
-    public function setLibelleEtablissement($libelleEtablissement)
+    public function setTelEtablissement($telEtablissement)
     {
-        $this->libelleEtablissement = $libelleEtablissement;
+        $this->telEtablissement = $telEtablissement;
 
         return $this;
     }
 
     /**
-     * Get libelleEtablissement
+     * Get telEtablissement.
      *
      * @return string
      */
-    public function getLibelleEtablissement()
+    public function getTelEtablissement()
     {
-        return $this->libelleEtablissement;
+        return $this->telEtablissement;
     }
 
+    /**
+     * Set emailEtablissement.
+     *
+     * @param string $emailEtablissement
+     *
+     * @return Etablissement
+     */
+    public function setEmailEtablissement($emailEtablissement)
+    {
+        $this->emailEtablissement = $emailEtablissement;
+
+        return $this;
+    }
+
+    /**
+     * Get emailEtablissement.
+     *
+     * @return string
+     */
+    public function getEmailEtablissement()
+    {
+        return $this->emailEtablissement;
+    }
+
+    /**
+     * Set responsableEtablissement.
+     *
+     * @param string $responsableEtablissement
+     *
+     * @return Etablissement
+     */
+    public function setResponsableEtablissement($responsableEtablissement)
+    {
+        $this->responsableEtablissement = $responsableEtablissement;
+
+        return $this;
+    }
+
+    /**
+     * Get responsableEtablissement.
+     *
+     * @return string
+     */
+    public function getResponsableEtablissement()
+    {
+        return $this->responsableEtablissement;
+    }
+
+    /**
+     * Set numeroEtablissement.
+     *
+     * @param string $numeroEtablissement
+     *
+     * @return Etablissement
+     */
+    public function setNumeroEtablissement($numeroEtablissement)
+    {
+        $this->numeroEtablissement = $numeroEtablissement;
+
+        return $this;
+    }
+
+    /**
+     * Get numeroEtablissement.
+     *
+     * @return string
+     */
+    public function getNumeroEtablissement()
+    {
+        return $this->numeroEtablissement;
+    }
+
+    /**
+     * Set rueEtablissement.
+     *
+     * @param string $rueEtablissement
+     *
+     * @return Etablissement
+     */
+    public function setRueEtablissement($rueEtablissement)
+    {
+        $this->rueEtablissement = $rueEtablissement;
+
+        return $this;
+    }
+
+    /**
+     * Get rueEtablissement.
+     *
+     * @return string
+     */
+    public function getRueEtablissement()
+    {
+        return $this->rueEtablissement;
+    }
+
+    /**
+     * Set villeEtablissement.
+     *
+     * @param string $villeEtablissement
+     *
+     * @return Etablissement
+     */
+    public function setVilleEtablissement($villeEtablissement)
+    {
+        $this->villeEtablissement = $villeEtablissement;
+
+        return $this;
+    }
+
+    /**
+     * Get villeEtablissement.
+     *
+     * @return string
+     */
+    public function getVilleEtablissement()
+    {
+        return $this->villeEtablissement;
+    }
+    public function setPays($pays)
+    {
+        $this->pays = $pays;
+
+        return $this;
+    }
+    public function getPays()
+    {
+        return $this->pays;
+    }
+
+    public function setProposition($proposition)
+    {
+        $this->proposition = $proposition;
+
+        return $this;
+    }
+    public function getProposition()
+    {
+        return $this->proposition;
+    }
+    
 }

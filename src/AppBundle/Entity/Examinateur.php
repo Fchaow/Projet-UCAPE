@@ -7,157 +7,152 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Examinateur
  *
- * @ORM\Table(name="examinateur", indexes={@ORM\Index(name="Eid_langue_examinateur", columns={"Eid_langue_examinateur"})})
- * @ORM\Entity
+ * @ORM\Table(name="examinateur")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ExaminateurRepository")
  */
 class Examinateur
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id_examinateur", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="nom_examinateur", type="string", length=50, nullable=false)
+     * @ORM\Column(name="nom_examinateur", type="string", length=255)
      */
     private $nomExaminateur;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenom_examinateur", type="string", length=50, nullable=false)
+     * @ORM\Column(name="prenom_examinateur", type="string", length=255)
      */
     private $prenomExaminateur;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="telephone_examinateur", type="string", length=50, nullable=false)
+     * @ORM\Column(name="telephone_examinateur", type="string", length=255)
      */
     private $telephoneExaminateur;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id_examinateur", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $idExaminateur;
+     * @ORM\ManyToOne(targetEntity="Langue", inversedBy="examinateur")
+     * @ORM\JoinColumn(name="Eid_langue", referencedColumnName="id_langue")
+    */
+    private $langues;
 
     /**
-     * @var \AppBundle\Entity\Langue
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Langue")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Eid_langue_examinateur", referencedColumnName="id_langue")
-     * })
-     */
-    private $eidLangueExaminateur;
-    
+     * @ORM\OneToMany(targetEntity="Passer", mappedBy="examinateurs")
+    */
+    private $passer;
+
     /**
-     * Get nomExaminateur
+     * Get id.
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nomExaminateur.
+     *
+     * @param string $nomExaminateur
+     *
+     * @return Examinateur
+     */
+    public function setNomExaminateur($nomExaminateur)
+    {
+        $this->nomExaminateur = $nomExaminateur;
+
+        return $this;
+    }
+
+    /**
+     * Get nomExaminateur.
      *
      * @return string
      */
-    
     public function getNomExaminateur()
     {
         return $this->nomExaminateur;
     }
-    
+
     /**
-     * Set nomExaminateur
+     * Set prenomExaminateur.
      *
-     * @param string nomExaminateur
+     * @param string $prenomExaminateur
      *
      * @return Examinateur
-     *
      */
-    
-    public function setNomExaminateur($nomExaminateur)
+    public function setPrenomExaminateur($prenomExaminateur)
     {
-        $this->nomExaminateur = $nomExaminateur;
-        
+        $this->prenomExaminateur = $prenomExaminateur;
+
         return $this;
     }
-    
+
     /**
-     * Get nomExaminateur
+     * Get prenomExaminateur.
      *
      * @return string
      */
-    
     public function getPrenomExaminateur()
     {
         return $this->prenomExaminateur;
     }
-    
+
     /**
-     * Set prenomExaminateur
+     * Set telephoneExaminateur.
      *
-     * @param string prenomExaminateur
+     * @param string $telephoneExaminateur
      *
      * @return Examinateur
-     *
      */
-    
-    public function setPrenomExaminateur($prenomExaminateur)
+    public function setTelephoneExaminateur($telephoneExaminateur)
     {
-        $this->prenomExaminateur = $prenomExaminateur;
-        
+        $this->telephoneExaminateur = $telephoneExaminateur;
+
         return $this;
     }
-    
+
     /**
-     * Get telephoneExaminateur
+     * Get telephoneExaminateur.
      *
      * @return string
      */
-    
     public function getTelephoneExaminateur()
     {
         return $this->telephoneExaminateur;
     }
-    
-    /**
-     * Set telephoneExaminateur
-     *
-     * @param string telephoneExaminateur
-     *
-     * @return Examinateur
-     *
-     */
-    
-    public function setTelephoneExaminateur($telephoneExaminateur)
+    public function setLangues($langues)
     {
-        $this->telephoneExaminateur = $telephoneExaminateur;
-        
+        $this->langues = $langues;
+
         return $this;
     }
-    
-    /**
-     * Get idExaminateur
-     *
-     * @return int
-     */
-    
-    public function getIdExaminateur()
+    public function getLangues()
     {
-        return $this->idExaminateur;
-    }
-    
-    /**
-     * Set idExaminateur
-     *
-     * @param int idExaminateur
-     *
-     * @return Examinateur
-     *
-     */
-    
-    public function setIdExaminateur($idExaminateur)
-    {
-        $this->idExaminateur = $idExaminateur;
-        
-        return $this;
+        return $this->langues;
     }
 
+    public function setPasser($passer)
+    {
+        $this->passer = $passer;
+
+        return $this;
+    }
+    public function getPasser()
+    {
+        return $this->passer;
+    }
 }

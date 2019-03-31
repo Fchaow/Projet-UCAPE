@@ -8,32 +8,44 @@ use Doctrine\ORM\Mapping as ORM;
  * Classe
  *
  * @ORM\Table(name="classe")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ClasseRepository")
  */
 class Classe
 {
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="libelle_classe", type="string", length=50, nullable=false)
-     */
-    private $libelleClasse;
-
     /**
      * @var int
      *
      * @ORM\Column(name="id_classe", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $idClasse;
+    private $id;
 
-    public function getIdClasse()
-    {
-        return $this->idClasse;
-    }
     /**
-     * Set libelleClasse
+     * @var string
+     *
+     * @ORM\Column(name="libelle_classe", type="string", length=255)
+     */
+    private $libelleClasse;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Eleve", mappedBy="classes")
+    */
+    private $eleve;
+
+
+    /**
+     * Get id.
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set libelleClasse.
      *
      * @param string $libelleClasse
      *
@@ -47,7 +59,7 @@ class Classe
     }
 
     /**
-     * Get libelleClasse
+     * Get libelleClasse.
      *
      * @return string
      */
@@ -55,5 +67,14 @@ class Classe
     {
         return $this->libelleClasse;
     }
+    public function setEleve($eleve)
+    {
+        $this->eleve = $eleve;
 
+        return $this;
+    }
+    public function getEleve()
+    {
+        return $this->eleve;
+    }
 }

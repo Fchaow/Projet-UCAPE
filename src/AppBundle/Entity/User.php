@@ -12,11 +12,18 @@ use Doctrine\ORM\Mapping as ORM;
 class User extends BaseUser
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id_utilisateur", type="integer")
      * @ORM\Id
-     * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Eleve", mappedBy="utilisateurId")
+    */
+    private $eleve;
 
     public function __construct()
     {
