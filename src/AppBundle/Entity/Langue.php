@@ -8,77 +8,90 @@ use Doctrine\ORM\Mapping as ORM;
  * Langue
  *
  * @ORM\Table(name="langue")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\LangueRepository")
  */
 class Langue
 {
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="libelle_langue", type="string", length=50, nullable=false)
-     */
-    private $libelleLangue;
-
     /**
      * @var int
      *
      * @ORM\Column(name="id_langue", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $idLangue;
+    private $id;
 
     /**
-     * Get idLangue
+     * @var string
+     *
+     * @ORM\Column(name="libelle_langue", type="string", length=255)
+     */
+    private $libelleLangue;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Examinateur", mappedBy="langues")
+    */
+    private $examinateur;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Passer", mappedBy="langues")
+    */
+    private $passer;
+
+
+    /**
+     * Get id.
      *
      * @return int
      */
-    
-    public function getIdLangue()
+    public function getId()
     {
-        return $this->idLangue;
+        return $this->id;
     }
-    
+
     /**
-     * Set idLangue
+     * Set libelleLangue.
      *
-     * @param int idLangue
+     * @param string $libelleLangue
      *
      * @return Langue
-     *
      */
-    
-    public function setIdLangue($idLangue)
+    public function setLibelleLangue($libelleLangue)
     {
-        $this->idLangue = $idLangue;
-        
+        $this->libelleLangue = $libelleLangue;
+
         return $this;
     }
-    
+
     /**
-     * Get libelleLangue
+     * Get libelleLangue.
      *
      * @return string
      */
-    
     public function getLibelleLangue()
     {
         return $this->libelleLangue;
     }
-    
-    /**
-     * Set libelleLangue
-     *
-     * @param string libelleLangue
-     *
-     * @return Langue
-     *
-     */
-    
-    public function setLibelleLangue($libelleLangue)
+
+    public function setExaminateur($examinateur)
     {
-        $this->libelleLangue = $libelleLangue;
-        
+        $this->examinateur = $examinateur;
+
         return $this;
+    }
+    public function getExaminateur()
+    {
+        return $this->examinateur;
+    }
+
+    public function setPasser($passer)
+    {
+        $this->passer = $passer;
+
+        return $this;
+    }
+    public function getPasser()
+    {
+        return $this->passer;
     }
 }
