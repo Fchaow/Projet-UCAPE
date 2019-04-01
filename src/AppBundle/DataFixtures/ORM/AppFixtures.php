@@ -40,29 +40,20 @@ class AppFixtures implements FixtureInterface, ContainerAwareInterface
             $pays->setLibellePays($faker->country);
             $manager->persist($pays);
         }
-        $userManager = $this->container->get('fos_user.user_manager');
-        $user = $userManager->createUser();
+        $user = new User();
         $user->setUsername('admin');
         $user->setEmail('admin.admin@gmail.com');
         $user->setPlainPassword('admin');
         $user->setEnabled(true);
-        $user->setRoles(array("ROLE_SUPER_ADMIN"));
-        $userManager->updateUser($user,true);
-        for($i = 0; $i<100; $i++)
-        {
-            $eleve_uti = new User();
-            $eleve_uti->setUsername('eleve');
-            $eleve_uti->setUsernameCanonical('eleve');
-            $eleve_uti->setEmail('eleve.eleve@gmail.com');
-            $eleve_uti->setPassword('eleve');
-            $eleve_uti->setEnabled(1);
-            $eleve_uti->setRoles(array("ROLE_USER"));
-            $eleve_uti->setConfirmationToken('eleve');
-            $eleve_uti->setEmailCanonical('eleve.eleve@gmail.com');
-            $userManager->updateUser($eleve_uti,true);
-            $objetUtilisateur = array();
-            array_push($objetUtilisateur, $eleve_uti);
-        }
+        $user->setRoles(array("ROLE_ADMIN"));
+        $manager->persist($user);
+        $eleve_uti = new User();
+        $eleve_uti->setUsername('eleve');
+        $eleve_uti->setEmail('eleve.eleve@gmail.com');
+        $eleve_uti->setPlainPassword('eleve');
+        $eleve_uti->setEnabled(true);
+        $eleve_uti->setRoles(array("ROLE_USER"));
+        $manager->persist($eleve_uti);
         $objetPromotion = array();
         $lesChemins = [
             '2014',
@@ -151,7 +142,6 @@ class AppFixtures implements FixtureInterface, ContainerAwareInterface
             $eleve->setAvoyage($faker->boolean($chanceOfGettingTrue = 50));
             $eleve->setAnneeentreepromo($faker->datetime);
             $eleve->setPromotions($objetPromotion[rand(0,19)]);
-            $eleve->setUtilisateurId($objetUtilisateur[$i]);
             $manager->persist($eleve);
         }
         for ($i = 0; $i < 10; $i++) 
