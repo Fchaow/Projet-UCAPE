@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Liste des élèves UCAPE
+{% endblock %}
+
+
+{% block body %}
+
+<div class="well">
+    <ul>
+        {% for info in listeEleve %}
+        <li>{{ info.nom_eleve }}</li>
+        <li>{{ info.prenom_eleve }}</li>
+        <li>{{ info.sexe_eleve }}</li>
+        <li>{{ info.date_naiss_eleve }}</li>
+        <li>{{ info.email_parent_eleve }}</li>
+        
+        {% endfor %}
+    </ul>
+    
+    <a href="{{ path('home') }}">Retour à l'accueil</a>
+    
+</div>

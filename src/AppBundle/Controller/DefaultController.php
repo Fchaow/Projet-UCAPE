@@ -153,8 +153,62 @@ class DefaultController extends Controller
             ]);
     }
     
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/formChoix", name="formChoix")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     */
+    
     public function formChoixAction(Request $request)
     {
+        $choix = new Choix();
         
+        $formChoix = $this->createForm('AppBundle\Form\ChoixType', $choix);
+        
+        $formChoix->handleRequest($request);
+        
+        if($formChoix->isSubmitted() && $formChoix->isValid())
+        {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($choix);
+            $manager->flush();
+        }
+        $request->getSession()->getFlashBag()->add('notice', 'Choix bien enregistré.');
+        
+        return $this->render('FormSection.html.twig', [
+            'formChoix' => $formChoix->createView()
+            ]);
+    }
+    
+    /**
+     * @Route("/listeEleve", name="listeEleve")
+     */
+    public function listeEleveAction(Request $request)
+    {
+       
+        $eleve = $this->getDoctrine()->getRepository('AppBundle:Eleve')->findAll();
+            
+        // replace this example code with whatever you need
+        return $this->render('ListeEleve.html.twig', [
+            'listeEleve' => $eleve,
+            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+        ]);
+    }
+    
+    /**
+     * @Route("/ficheEleve", name="ficheEleve")
+     */
+    public function ficheEleveAction(Request $request, int $id)
+    {
+       
+        $eleve = $this->getDoctrine()->getRepository('AppBundle:Eleve')->find($id);
+        
+        if (null === $eleve){
+            throw new NotFoundHttpException("Désolé, l'élève n'a pas été trouvé.");
+        }
+        // replace this example code with whatever you need
+        return $this->render('FicheEleve.html.twig', [
+            'ficheEleve' => $eleve
+        ]);
     }
 }

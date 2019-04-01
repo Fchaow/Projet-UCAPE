@@ -5,6 +5,16 @@
 
 <div class="well">
 
-<h1> FORMULAIRE DE CHOIX DE LA DESTINATION</h1>
+    <h1> FORMULAIRE DE CHOIX DE LA DESTINATION</h1>
 
+    <div class="well">
+
+      {{ form(formChoix) }}
+
+    </div>
+    
+    <a href="{{ path('home') }}">Retour vers l'accueil</a>
+    
 </div>
+
+{% endblock %}
