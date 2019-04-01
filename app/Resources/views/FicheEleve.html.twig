@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Fiche élève de {{ ficheEleve.nom_eleve, ficheEleve.prenom_eleve }} .
+{% endblock %}
+
+
+{% block body %}
+
+<div class="well">
+    <h1>Nom : {{ ficheEleve.nom_eleve }} </h1>
+    <p> Prénom : {{ ficheEleve.prenom_eleve }} </p>
+    <p> Sexe : {{ ficheEleve.sexe_eleve }} </p>
+    <p> Date de naissance : {{ ficheEleve.date_naiss_eleve }} </p>
+    <!--<p> Promotion : {{ ficheEleve.promo_eleve. }} </p>-->
+    <p> Adresse e-mail : {{ ficheEleve.email_eleve }} </p>
+    <p> Adresse e-mail d'un parent de l'élève : {{ ficheEleve.email_parent_eleve }} </p>
+    <p> Commentaires générals : {{ ficheEleve.commentaires_general_eleve }} </p>
+    <!--<p> Terre des langues : {{ ficheEleve.terre_des_langues_eleve. }} </p>-->
+    <p> Commentaires choix : {{ ficheEleve.commentaires_choix_eleve }} </p>
+    <!--<p> Visa du parent de l'élève : {{ ficheEleve.visa_parent_eleve }} </p>-->
+    <p> Date des UE2 : {{ ficheEleve.UE2_date_eleve }} </p>
+    <p> Thème du dossier des UE2 : {{ ficheEleve.UE2_theme_dossier_eleve }} </p>
+    <p> Note des UE2 : {{ ficheEleve.UE2_note_eleve }} </p>
+    <p> Appreciations des UE2 : {{ ficheEleve.UE2_appreciations_eleve }} </p>
+    <p> Type de l'élève : {{ ficheEleve.type_eleve }} </p>
+    <p> Date des UE1 : {{ ficheEleve.UE1_date_ucape }} </p>
+    <p> Note des UE1 : {{ ficheEleve.UE1_note_ucape}} </p>
+    <p> Appréciations des UE1 : {{ ficheEleve.UE1_appreciations_ucape }} </p>
+    <p> Obtention du diplôme ucape : {{ ficheEleve.obtention_diplome_ucape }} </p>
+    <p> Mention ucape : {{ ficheEleve.mention_ucape }} </p>
+    <p> Commentaires ucape : {{ ficheEleve.commentaires_ucape }} </p>
+</div>
+   
+   <a href="{{ path('home') }}">Retour à l'accueil</a>
+   
+{% endblock %}
+    
