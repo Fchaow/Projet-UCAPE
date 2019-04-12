@@ -6,22 +6,15 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Doctrine\ORM\EntityRepository;
-use AppBundle\Entity\Etablisement;
 
 class EtablissementType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('libelleEtablissement', TextType::class, [
-                'label' => 'Libellé de l\'établissement',
-                
-            ])
-        
             ->add('nomEtablissement', TextType::class, [
                     'label' => 'Nom de l\'établissement',
 
@@ -42,7 +35,7 @@ class EtablissementType extends AbstractType
                 
             ])
         
-            ->add('numeroEtablissement', TextType::class, [
+            ->add('numeroEtablissement', IntegerType::class, [
                 'label' => 'Numéro de l\'établissement',
                 
             ])
@@ -56,6 +49,12 @@ class EtablissementType extends AbstractType
                 'label' => 'Ville de l\'établissement',
                 
             ])
+            ->add('pays', EntityType::class, array(
+                'class'        => 'AppBundle\Entity\Pays',
+                'choice_label' => 'libellePays',
+                'multiple'     => false,
+                'expanded'     => false,
+              ))
             
             ->add('submit', SubmitType::class, [ 'label' => 'Valider']);
       
@@ -64,8 +63,8 @@ class EtablissementType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Etablisement'
-            
+            'data_class' => 'AppBundle\Entity\Etablissement',
+            'is_edit' => false
         ));
     }
 }

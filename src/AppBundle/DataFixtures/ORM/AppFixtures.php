@@ -16,16 +16,16 @@ use AppBundle\Entity\Langue;
 use AppBundle\Entity\Promotion;
 use AppBundle\Entity\Passer;
 use AppBundle\Entity\User;
-use AppBundle\Entity\Choix;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 use Faker;
 
 
-class AppFixtures implements FixtureInterface, ContainerAwareInterface
+class AppFixtures extends Fixture implements FixtureInterface, ContainerAwareInterface
 {
     /**
      * @var ContainerInterface
      */
-    private $container;
+    protected $container;
     public function setContainer(ContainerInterface $container = null)
     {
         $this->container = $container;

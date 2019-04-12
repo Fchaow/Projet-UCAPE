@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+        <a href="{{path('listeEtablissement')}}">Afficher tous les établissements</a>
+        <h1>Modification de la fiche de l'établissement</h1>
+        {{ form_start(formModif) }}
+        <div style="width:200px">
+            {{ form_row(formModif.nomEtablissement) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formModif.telEtablissement) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formModif.emailEtablissement) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formModif.responsableEtablissement) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formModif.numeroEtablissement) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formModif.rueEtablissement) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formModif.villeEtablissement) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formModif.pays) }}
+        </div>
+        {{ form_row(formModif.submit) }}
+        
+        {{ form_end(formModif) }}
+
+{% endblock %}
