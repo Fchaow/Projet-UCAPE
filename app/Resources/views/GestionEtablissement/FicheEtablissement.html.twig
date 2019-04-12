@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{% endblock %}
+
+
+{% block body %}
+<div class="well" style="display:block; text-align:center;">
+    <a href="{{ path('modifEtablissement', {'idEtablissement': ficheEtablissement.id}) }}">Modifier la fiche de l'établissement</a> |
+    <a href="{{path('listeEtablissement')}}">Afficher tous les établissements</a> |
+    <a href="{{ path('suppEtablissement', {'idEtablissement': ficheEtablissement.id}) }}">Supprimer la fiche de l'établissement</a>
+</div>
+<div class="well">
+    <h2>Fiche de l'établissement : {{ ficheEtablissement.nomEtablissement}}</h2>
+    <div class="well">
+        <p> Téléphone de l'établissement : {{ ficheEtablissement.telEtablissement }} </p>
+        <p> Email de l'établissement : {{ ficheEtablissement.emailEtablissement }} </p>
+        <p> Responsable de l'établissement : {{ ficheEtablissement.responsableEtablissement }} </p>
+        <p> Numéro de rue de l'établissement : {{ ficheEtablissement.numeroEtablissement }} </p>
+        <p> Rue de l'établissement : {{ ficheEtablissement.rueEtablissement }} </p>
+        <p> Ville de l'établissement : {{ ficheEtablissement.villeEtablissement }} </p>
+        <p> Pays de l'établissement : {{ ficheEtablissement.pays.libellePays }} </p>
+    </div>
+</div>
+   
+{% endblock %}

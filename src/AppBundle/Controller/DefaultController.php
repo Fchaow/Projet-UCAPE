@@ -26,6 +26,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use AppBundle\Entity\Etablissement;
 
 class DefaultController extends Controller
 {
@@ -96,36 +97,6 @@ class DefaultController extends Controller
             ]);
 
     }
-    
-     /**
-     * @return \Symfony\Component\HttpFoundation\Response
-     * @Route("/form2", name="form2")
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
-     */
-    public function form2Action(Request $request)
-
-    {
-        $etablissement = new Etablisement();
-        
-        $formEtablissement = $this->createForm('AppBundle\Form\EtablissementType', $etablissement);
-        
-        $formEtablissement->handleRequest($request);
-
-        if ($formEtablissement->isSubmitted() && $formEtablissement->isValid())
-        {
-            $manager = $this->getDoctrine()->getManager();
-            $manager->persist($etablisement);
-            $manager->flush();
-        }
-        $request->getSession()->getFlashBag()->add('notice', 'Etablissement bien enregistré.');
-        
-        return $this->render('FormEtablis.html.twig', [
-            'formEtablissement' => $formEtablissement->createView()
-            ]);
-        
-
-    }
-    
     /**
      * @return \Symfony\Component\HttpFoundation\Response
      * @Route("/formPays", name="formPays")

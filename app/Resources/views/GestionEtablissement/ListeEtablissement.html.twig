@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Liste des établissements
+{% endblock %}
+
+
+{% block body %}
+<p><a href="{{ path('ajout_etablissement') }}">Ajouter un nouvel établissement </a></p>
+<div class="well">
+    <h1 style='text-align:center;'>Liste des Etablissements</h1>
+    <table style ='border-collapse: collapse; text-align:center; margin: auto;'>
+        <tr>
+            <td style='border:1px solid black; padding:3px;'><b>Nom</b></td>
+            <td style='border:1px solid black; padding:3px;'><b>Téléphone</b></td>
+            <td style='border:1px solid black; padding:3px;'><b>Email</b></td>
+            <td style='border:1px solid black; padding:3px;'><b>Ville</b></td>
+            <td style='border:1px solid black; padding:3px;'><b>Consulter</b></td>
+        </tr>
+        {% for info in ListeEtablissement %}
+            <tr>
+                <td style='border:1px solid black; padding:3px;'>{{ info.nomEtablissement }}</td>
+                <td style='border:1px solid black; padding:3px;'>{{ info.telEtablissement }}</td>
+                <td style='border:1px solid black; padding:3px;'>{{ info.emailEtablissement }}</td>
+                <td style='border:1px solid black; padding:3px;'>{{ info.villeEtablissement }}</td>
+                <td style='border:1px solid black; padding:3px;'><a href="{{ path('ficheEtablissement', {'idEtablissement': info.id}) }}">Fiche établissement</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+        <a href="{{path('listeEtablissement')}}">Afficher tous les établissements</a>
+        <h1>Ajout d'un établissement</h1>
+        {{ form_start(formEtablissement) }}
+        <div style="width:200px">
+            {{ form_row(formEtablissement.nomEtablissement) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formEtablissement.telEtablissement) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formEtablissement.emailEtablissement) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formEtablissement.responsableEtablissement) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formEtablissement.numeroEtablissement) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formEtablissement.rueEtablissement) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formEtablissement.villeEtablissement) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formEtablissement.pays) }}
+        </div>
+        {{ form_row(formEtablissement.submit) }}
+
+        {{ form_end(formEtablissement) }}
+
+{% endblock %}

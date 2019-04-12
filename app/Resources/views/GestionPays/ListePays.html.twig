@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Liste des pays
+{% endblock %}
+
+
+{% block body %}
+<p><a style="float:left;" href="{{ path('ajout_pays') }}">Ajouter un nouveau pays </a></p>
+<p><a style="float:right;" href="{{ path('admin') }}">Retour au Menu</a></p>
+<div class="well">
+    <h1 style='text-align:center;'>Liste des Pays</h1>
+    <table style ='border-collapse: collapse; text-align:center; margin: auto;'>
+        <tr>
+            <td style='border:1px solid black; padding:3px;'><b>Nom</b></td>
+            <td style='border:1px solid black; padding:3px;'><b>Modifier</b></td>
+            <td style='border:1px solid black; padding:3px;'><b>Supprimer</b></td>
+        </tr>
+        {% for info in ListePays %}
+            <tr>
+                <td style='border:1px solid black; padding:3px;'>{{ info.libellePays }}</td>
+                <td style='border:1px solid black; padding:3px;'><a href="{{ path('modifPays', {'idPays': info.id}) }}">Modifier la fiche du pays</a></td>
+                <td style='border:1px solid black; padding:3px;'><a href="{{ path('suppPays', {'idPays': info.id}) }}">Supprimer la fiche du pays</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

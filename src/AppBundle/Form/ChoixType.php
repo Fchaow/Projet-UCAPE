@@ -37,6 +37,6 @@ class ChoixType extends AbstractType
                 'label' => 'Choix du pays n°1 : ',
                 'choice_label' => 'libelle_pays',    
             ])
-            ->add('commentaires', TextareaType::class)
+            ->add('commentaires', TextareaType::class);
     }
 }

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+        <a href="{{path('listePays')}}">Afficher tous les pays</a>
+        <div class="well">
+            <h1>Ajout d'un pays</h1>
+            {{ form_start(formPays) }}
+            <div style="width:200px">
+                {{ form_row(formPays.libellePays) }}
+            </div>
+            {{ form_row(formPays.submit) }}
+
+            {{ form_end(formPays) }}
+        </div>
+
+{% endblock %}

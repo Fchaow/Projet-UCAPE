@@ -12,16 +12,13 @@
         
     <h1>Votre role dans cette page</h1>
 
-    <p>Vous etes un : </p>
-
-
         <p>ADMINISTARTEUR</p>
 
-        <p><a href="{{ path('form')}}">Accédez au formulaire élève</a></p>
-
-        <p><a href="{{ path('form2')}}">Accédez au formulaire établissement</a></p>
+        <p><a href="{{ path('form')}}">Accéder au formulaire élève</a></p>
         
-        <p><a href="{{ path('formPays')}}">Accédez au formulaire pays</a></p>
+        <p><a href="{{ path('listePays')}}">Accéder à la gestion des Pays</a></p>
+
+        <p><a href="{{ path('listeEtablissement')}}">Accéder à la gestion des Etablissements</a></p>
     {% endif %}
 
 {% endblock %}
