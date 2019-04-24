@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <h1 class="my-3">Souhait destination</h1>
+
+    <hr>
+
+    <div class="well">
+
+        {{ form_start(formChoix) }}
+
+        {{ form_widget(formChoix) }}
+
+        {{ form_end(formChoix) }}
+
+    </div>
+
+    <hr>
+
+{% endblock %}
