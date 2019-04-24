@@ -15,7 +15,7 @@ class PaysType extends AbstractType
         $builder
             ->add('libellePays', TextType::class, [
                 'label' => 'Nom du pays',
-                
+                'required'   => true,
             ])
             ->add('submit', SubmitType::class, [ 'label' => 'Valider']);
     }

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+        <a href="{{path('listePromos')}}">Afficher toutes les promotions</a>
+        <h1>Ajout d'une promotion</h1>
+        {{ form_start(formPromos) }}
+        <div style="width:200px">
+            {{ form_row(formPromos.anneePromo) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formPromos.themeEuropePromo) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formPromos.cheminDSPPromo) }}
+        </div>
+        {{ form_row(formPromos.submit) }}
+
+        {{ form_end(formPromos) }}
+
+{% endblock %}
