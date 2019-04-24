@@ -17,36 +17,43 @@ class EtablissementType extends AbstractType
         $builder
             ->add('nomEtablissement', TextType::class, [
                     'label' => 'Nom de l\'établissement',
+                    'required' => true,
 
                 ])
         
             ->add('telEtablissement', TextType::class, [
                 'label' => 'Téléphone de l\'établissement',
+                'required' => true,
                 
             ])
         
             ->add('emailEtablissement', TextType::class, [
                 'label' => 'Adresse e-mail de l\'établissement',
+                'required' => true,
                 
             ])
         
             ->add('responsableEtablissement', TextType::class, [
                 'label' => 'Responsable de l\'établissement',
+                'required' => true,
                 
             ])
         
             ->add('numeroEtablissement', IntegerType::class, [
                 'label' => 'Numéro de l\'établissement',
+                'required' => true,
                 
             ])
         
             ->add('rueEtablissement', TextType::class, [
                 'label' => 'Rue de l\'établissement',
+                'required' => true,
                 
             ])
         
             ->add('villeEtablissement', TextType::class, [
                 'label' => 'Ville de l\'établissement',
+                'required' => true,
                 
             ])
             ->add('pays', EntityType::class, array(
@@ -54,6 +61,7 @@ class EtablissementType extends AbstractType
                 'choice_label' => 'libellePays',
                 'multiple'     => false,
                 'expanded'     => false,
+                'required' => true,
               ))
             
             ->add('submit', SubmitType::class, [ 'label' => 'Valider']);
