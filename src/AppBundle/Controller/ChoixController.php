@@ -54,7 +54,7 @@ class DefaultController extends Controller
 
     }
 
-/**********************************************************************************************************************************************************/
+
     /**
      * @return \Symfony\Component\HttpFoundation\Response
      * @Route("/ajouter_choix", name="ajouter_choix")

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Liste des promotions
+{% endblock %}
+
+
+{% block body %}
+<p><a style="float:left;" href="{{ path('ajout_promos') }}">Ajouter une nouvelle promotion </a></p>
+<p><a style="float:right;" href="{{ path('admin') }}">Retour au Menu</a></p>
+<div class="well">
+    <h1 style='text-align:center;'>Liste des Promotions</h1>
+    <table style ='border-collapse: collapse; text-align:center; margin: auto;'>
+        <tr>
+            <td style='border:1px solid black; padding:3px;'><b>Année</b></td>
+            <td style='border:1px solid black; padding:3px;'><b>Thème</b></td>
+            <td style='border:1px solid black; padding:3px;'><b>Consulter</b></td>
+        </tr>
+        {% for info in ListePromos %}
+            <tr>
+                <td style='border:1px solid black; padding:3px;'>{{ info.anneePromo }}</td>
+                <td style='border:1px solid black; padding:3px;'>{{ info.themeEuropePromo }}</td>
+                <td style='border:1px solid black; padding:3px;'><a href="{{ path('fichePromos', {'idPromos': info.id}) }}">Fiche promotion</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

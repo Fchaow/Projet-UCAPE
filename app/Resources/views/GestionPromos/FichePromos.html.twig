@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{% endblock %}
+
+
+{% block body %}
+<div class="well" style="display:block; text-align:center;">
+    <a href="{{ path('modifPromos', {'idPromos': fichePromos.id}) }}">Modifier la fiche d'une promotion</a> |
+    <a href="{{path('listePromos')}}">Afficher toutes les promotions</a> |
+    <a href="{{ path('suppPromos', {'idPromos': fichePromos.id}) }}">Supprimer la fiche d'une promotion</a>
+</div>
+<div class="well">
+    <h2>Fiche de la promotion : {{ fichePromos.anneePromo}}</h2>
+    <div class="well">
+        <p> Thème pour cette promotion : {{ fichePromos.themeEuropePromo }} </p>
+        <p> Chemin d'accès pour cette promotion : {{ fichePromos.cheminDSPPromo }}{{fichePromos.anneePromo}} </p>
+    </div>
+</div>
+   
+{% endblock %}

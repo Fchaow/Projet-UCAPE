@@ -41,7 +41,7 @@ class EtablissementController extends Controller
         ]);
     }
     /**
-     * @Route ("/ficheEtablissement/ajout", name="ajout_etablissement")
+     * @Route ("/listeEtablissement/ajout", name="ajout_etablissement")
      */
     public function ajoutEtablissementAction(Request $request)
     {
