@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <h1 class="my-3">Consultation choix de destinantion</h1>
+
+    <hr>
+
+        {% for choix in choixs  %}
+
+            <div class="well">
+
+                <p>N° :                                   {{ choix.id }}</p>
+                <p>Choix N°1 :                            {{ choix.choixPays1 }}</p>
+                <p>Choix N°2 :                            {{ choix.choixPays2 }}</p>
+                <p>Choix N°3 :                            {{ choix.choixPays3 }}</p>
+                <p>Terre des langues (oui : 1, non : 0) : {{ choix.terreDesLangues }}</p>
+                <p>Commentaire :                          {{ choix.commentaires }}</p>
+                <p>Visa des parents (oui : 1) :           {{ choix.visaDuParent }}</a></p>
+               
+
+                <p>
+                    <a href="{{ path('modifier_choix', {'id':choix.id}) }}">Modifier </a>
+                    <a href="{{ path('supprimer_choix', {'id':choix.id}) }}"> Supprimer</a>
+                    
+                </p>
+
+            </div>
+
+        {% endfor %}
+
+{% endblock %}
