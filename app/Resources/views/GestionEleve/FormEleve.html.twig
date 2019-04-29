@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+        <a href="{{path('listeEleve')}}">Afficher tous les élèves</a>
+        <h1>Ajout d'un élève</h1>
+        {{ form_start(formEleve) }}
+        <div style="width:200px">
+            {{ form_row(formEleve.nomEleve) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formEleve.prenomEleve) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formEleve.sexeEleve) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formEleve.dateNaissEleve) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formEleve.emailEleve) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formEleve.motDePasseEleve) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formEleve.emailParentEleve) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formEleve.commentairesGeneralEleve) }}
+        </div>
+                <div style="width:200px">
+            {{ form_row(formEleve.classes) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formEleve.promotions) }}
+        </div>
+                <div style="width:200px">
+            {{ form_row(formEleve.utilisateurId) }}
+        </div>
+        {{ form_row(formEleve.submit) }}
+
+        {{ form_end(formEleve) }}
+
+{% endblock %}
