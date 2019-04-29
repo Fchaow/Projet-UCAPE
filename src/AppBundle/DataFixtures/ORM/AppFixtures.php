@@ -155,19 +155,22 @@ class AppFixtures extends Fixture implements FixtureInterface, ContainerAwareInt
             $etablissement->setVilleEtablissement($faker->city);
             $manager->persist($etablissement);
         }
+        $objectLangue = array();
+        for ($i = 0; $i < 20; $i++)
+        {
+            $langue = new Langue();
+            $langue->setLibelleLangue($faker->countryCode);
+            $manager->persist($langue);
+            array_push($objectLangue, $langue);
+        }
         for ($i = 0; $i < 20; $i++)
         {
             $examinateur = new Examinateur();
             $examinateur->setNomExaminateur($faker->lastName);
             $examinateur->setPrenomExaminateur($faker->firstName);
             $examinateur->setTelephoneExaminateur($faker->phoneNumber);
+            $examinateur->setLangues($objectLangue[rand(0,19)]);
             $manager->persist($examinateur);
-        }
-        for ($i = 0; $i < 20; $i++)
-        {
-            $langue = new Langue();
-            $langue->setLibelleLangue($faker->countryCode);
-            $manager->persist($langue);
         }
         for ($i = 0; $i < 20; $i++)
         {

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{% endblock %}
+
+
+{% block body %}
+<div class="well" style="display:block; text-align:center;">
+    <a href="{{ path('modifExaminateur', {'idExaminateur': ficheExaminateur.id}) }}">Modifier la fiche de l'examinateur</a> |
+    <a href="{{path('listeExaminateur')}}">Afficher tous les examinateurs</a> |
+    <a href="{{ path('suppExaminateur', {'idExaminateur': ficheExaminateur.id}) }}">Supprimer la fiche de l'examinateur</a>
+</div>
+<div class="well">
+    <h2>Fiche de l'examinateur : {{ ficheExaminateur.nomExaminateur}}</h2>
+    <div class="well">
+        <p> Nom de l'examinateur : {{ ficheExaminateur.nomExaminateur }} </p>
+        <p> Prénom de l'examinateur : {{ ficheExaminateur.prenomExaminateur }} </p>
+        <p> Numéro de téléphone de l'examinateur : {{ ficheExaminateur.telephoneExaminateur }} </p>
+        <p> Langue de l'examinateur : {{ ficheExaminateur.langues.libelleLangue }} </p>
+    </div>
+</div>
+   
+{% endblock %}

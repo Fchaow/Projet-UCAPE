@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>Edition d'un article</h1>
+
+<div class="well">
+
+    {{ form(formEleve) }}
+
+</div>
+
+<a href="{{ path('articles') }}">Retour vers la liste des articles</a>
+
+{% endblock body %}

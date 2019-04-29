@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Liste des examinateurs
+{% endblock %}
+
+
+{% block body %}
+<p><a style="float:left;" href="{{ path('ajout_examinateur') }}">Ajouter un nouvel examinateur </a></p>
+<p><a style="float:right;" href="{{ path('admin') }}">Retour au Menu</a></p>
+<div class="well">
+    <h1 style='text-align:center;'>Liste des Examinateurs</h1>
+    <table style ='border-collapse: collapse; text-align:center; margin: auto;'>
+        <tr>
+            <td style='border:1px solid black; padding:3px;'><b>Nom</b></td>
+            <td style='border:1px solid black; padding:3px;'><b>Prénom</b></td>
+            <td style='border:1px solid black; padding:3px;'><b>Consulter</b></td>
+        </tr>
+        {% for info in ListeExaminateur %}
+            <tr>
+                <td style='border:1px solid black; padding:3px;'>{{ info.nomExaminateur }}</td>
+                <td style='border:1px solid black; padding:3px;'>{{ info.prenomExaminateur }}</td>
+                <td style='border:1px solid black; padding:3px;'><a href="{{ path('ficheExaminateur', {'idExaminateur': info.id}) }}">Fiche examinateur</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
