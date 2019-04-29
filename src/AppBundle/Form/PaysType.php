@@ -26,7 +26,6 @@ class PaysType extends AbstractType
         $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\Pays',
             'is_edit' => false
-            
         ));
     }
 }

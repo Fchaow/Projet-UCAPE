@@ -119,7 +119,6 @@ class AppFixtures extends Fixture implements FixtureInterface, ContainerAwareInt
             $eleve->setPrenomEleve($faker->firstName);
             $eleve->setSexeEleve($faker->randomElement($array = array ('H','F')));
             $eleve->setDateNaissEleve($faker->datetime);
-            $eleve->setPromoEleve($faker->numberBetween($min = 1999, $max = 2003));
             $eleve->setEmailEleve($faker->email);
             $eleve->setEmailParentEleve($faker->email);
             $eleve->setMotDePasseEleve($faker->password);

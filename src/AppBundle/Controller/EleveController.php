@@ -16,7 +16,7 @@ class EleveController extends Controller
     public function listeEleveAction(Request $request)
     {
        
-        $eleve = $this->getDoctrine()->getRepository('AppBundle:Eleve')->findAll();
+        $eleve = $this->getDoctrine()->getRepository('AppBundle:Eleve')->findBy(array(), array('nomEleve' => 'asc'));
             
         // replace this example code with whatever you need
         return $this->render('GestionEleve/ListeEleve.html.twig', [

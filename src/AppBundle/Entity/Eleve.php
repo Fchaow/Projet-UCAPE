@@ -50,13 +50,6 @@ class Eleve
     private $dateNaissEleve;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="promo_eleve", type="integer")
-     */
-    private $promoEleve;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="email_eleve", type="string", length=255)
@@ -334,30 +327,6 @@ class Eleve
     public function getDateNaissEleve()
     {
         return $this->dateNaissEleve;
-    }
-
-    /**
-     * Set promoEleve.
-     *
-     * @param int $promoEleve
-     *
-     * @return Eleve
-     */
-    public function setPromoEleve($promoEleve)
-    {
-        $this->promoEleve = $promoEleve;
-
-        return $this;
-    }
-
-    /**
-     * Get promoEleve.
-     *
-     * @return int
-     */
-    public function getPromoEleve()
-    {
-        return $this->promoEleve;
     }
 
     /**
