@@ -40,4 +40,15 @@ class User extends BaseUser
     {
         return $this->id;
     }
+
+    public function setEleve($eleve)
+    {
+        $this->eleve = $eleve;
+
+        return $this;
+    }
+    public function getEleve()
+    {
+        return $this->eleve;
+    }
 }

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{% endblock %}
+
+
+{% block body %}
+<div class="well" style="display:block; text-align:center;">
+    <a href="{{ path('modifEleve', {'idEleve': ficheEleve.id}) }}">Modifier la fiche de l'élève</a> |
+    <a href="{{path('listeEleve')}}">Afficher tous les élèves</a> |
+    <a href="{{ path('suppEleve', {'idEleve': ficheEleve.id}) }}">Supprimer la fiche de l'élève</a>
+</div>
+<div class="well">
+    <h2>Fiche de l'élève : {{ ficheEleve.nomEleve}} {{ ficheEleve.prenomEleve}}</h2>
+    <div class="well">
+        <p> Sexe de l'élève (H ou F) : {{ ficheEleve.sexeEleve }} </p>
+        <p> Date de naissance de l'élève : {{ ficheEleve.dateNaissEleve.date }} </p>
+        <p> Email de l'élève : {{ ficheEleve.emailEleve }} </p>
+        <p> Mot de passe de l'élève : {{ ficheEleve.motDePasseEleve }} </p>
+        <p> Email des parents de l'élève : {{ ficheEleve.emailParentEleve }} </p>
+        <p> Classe de l'élève : {{ ficheEleve.classes.libelleClasse }} </p>
+        <p> Promotion de l'élève : {{ ficheEleve.promotions.anneePromo }} </p>
+        <p> Commentaire sur l'élève : {{ ficheEleve.commentairesGeneralEleve }} </p>
+    </div>
+</div>
+   
+{% endblock %}

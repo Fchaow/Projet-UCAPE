@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Liste des élèves
+{% endblock %}
+
+
+{% block body %}
+<p><a style="float:left;" href="{{ path('ajout_eleve') }}">Ajouter un nouvel élève </a></p>
+<p><a style="float:right;" href="{{ path('admin') }}">Retour au Menu</a></p>
+<div class="well">
+    <h1 style='text-align:center;'>Liste des élèves</h1>
+    <div style="height:400px; overflow:auto;">
+        <table style ='border-collapse: collapse; text-align:center; margin: auto;'>
+            <tr>
+                <td style='border:1px solid black; padding:3px;'><b>Nom</b></td>
+                <td style='border:1px solid black; padding:3px;'><b>Prénom</b></td>
+                <td style='border:1px solid black; padding:3px;'><b>Classe</b></td>
+                <td style='border:1px solid black; padding:3px;'><b>Promotion</b></td>
+                <td style='border:1px solid black; padding:3px;'><b>Consulter</b></td>
+            </tr>
+            {% for info in ListeEleve %}
+                <tr>
+                    <td style='border:1px solid black; padding:3px;'>{{ info.nomEleve }}</td>
+                    <td style='border:1px solid black; padding:3px;'>{{ info.prenomEleve }}</td>
+                    <td style='border:1px solid black; padding:3px;'>{{ info.classes.libelleClasse }}</td>
+                    <td style='border:1px solid black; padding:3px;'>{{ info.promotions.anneePromo }}</td>
+                    <td style='border:1px solid black; padding:3px;'><a href="{{ path('ficheEleve', {'idEleve': info.id}) }}">Fiche élève</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}
