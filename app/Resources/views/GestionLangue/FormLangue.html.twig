@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+        <a href="{{path('listeLangue')}}">Afficher toutes les langues</a>
+        <div class="well">
+            <h1>Ajout d'une langue</h1>
+            {{ form_start(formLangue) }}
+            <div style="width:200px">
+                {{ form_row(formLangue.libelleLangue) }}
+            </div>
+            {{ form_row(formLangue.submit) }}
+
+            {{ form_end(formLangue) }}
+        </div>
+
+{% endblock %}

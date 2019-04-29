@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+        <a href="{{path('listeExaminateur')}}">Afficher tous les examinateur</a>
+        <h1>Ajout d'un examinateur</h1>
+        {{ form_start(formExaminateur) }}
+        <div style="width:200px">
+            {{ form_row(formExaminateur.nomExaminateur) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formExaminateur.prenomExaminateur) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formExaminateur.telephoneExaminateur) }}
+        </div>
+        <div style="width:200px">
+            {{ form_row(formExaminateur.langues) }}
+        </div>
+        {{ form_row(formExaminateur.submit) }}
+
+        {{ form_end(formExaminateur) }}
+
+{% endblock %}

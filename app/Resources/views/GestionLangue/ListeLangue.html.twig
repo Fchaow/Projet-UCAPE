@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Liste des Langues
+{% endblock %}
+
+
+{% block body %}
+<p><a style="float:left;" href="{{ path('ajout_langue') }}">Ajouter une nouvelle langue </a></p>
+<p><a style="float:right;" href="{{ path('admin') }}">Retour au Menu</a></p>
+<div class="well">
+    <h1 style='text-align:center;'>Liste des Langues</h1>
+    <table style ='border-collapse: collapse; text-align:center; margin: auto;'>
+        <tr>
+            <td style='border:1px solid black; padding:3px;'><b>Nom</b></td>
+            <td style='border:1px solid black; padding:3px;'><b>Modifier</b></td>
+            <td style='border:1px solid black; padding:3px;'><b>Supprimer</b></td>
+        </tr>
+        {% for info in ListeLangue %}
+            <tr>
+                <td style='border:1px solid black; padding:3px;'>{{ info.libelleLangue }}</td>
+                <td style='border:1px solid black; padding:3px;'><a href="{{ path('modifLangue', {'idLangue': info.id}) }}">Modifier la fiche de la langue</a></td>
+                <td style='border:1px solid black; padding:3px;'><a href="{{ path('suppLangue', {'idLangue': info.id}) }}">Supprimer la fiche de la langue</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-        <a href="{{path('listePays')}}">Afficher tous les pays</a>
-        <h1>Modification d'un pays</h1>
+        <a href="{{path('listeLangue')}}">Afficher toutes les langues</a>
+        <h1>Modification d'une langue</h1>
         {{ form_start(formModif) }}
         <div style="width:200px">
-            {{ form_row(formModif.libellePays) }}
+            {{ form_row(formModif.libelleLangue) }}
         </div>
         {{ form_row(formModif.submit) }}
         
